@@ -1,0 +1,326 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/fontawesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/solid.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/brands.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+@import url("./photoswipe/dist/photoswipe.css");
+
+/* set text style */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Raleway", Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+a {
+    color: darkgrey;
+}
+
+code {
+    color: hotpink;
+    white-space: nowrap;
+}
+
+/* global dimensions */
+
+body {
+    --navheight: 4em;
+    --footerheight: 4em;
+    --margin: 10px;
+    --radius: 25px;
+    --padding: 20px;
+}
+
+/* remove underlines from links */
+
+a {
+    text-decoration: none;
+}
+
+/* alt text for icons */
+
+a.icon span {
+	display: none;
+}
+
+/* background image */
+
+body {
+    background-attachment: fixed;
+    background-image: url("images/PXL_20230329_063754358.jpg");
+    background-position: center center;
+	background-size: cover;
+}
+
+/* navigation style */
+
+#nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 2 * var(--margin));
+    height: var(--navheight);
+    margin: var(--margin);
+    background-color: rgb(0, 0, 0, 0.8);
+    border-radius: var(--radius);
+}
+
+#nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    vertical-align: middle;
+    list-style: none;
+    line-height: 2em;
+}
+
+#nav ul li {
+    display: inline-block;
+    padding-right: 1em;
+}
+
+#nav ul li a {
+    color: white;
+}
+
+.dropdown {
+	position: relative;
+    padding-bottom: 1em;
+}
+
+#nav ul li ul.dropdown-content {
+	display: none;
+}
+
+#nav ul li.dropdown:hover ul.dropdown-content {
+	position: absolute;
+    top: 1em;
+    left: -1em;
+	z-index: 1;
+    display: block;
+    padding: var(--padding);
+    margin: var(--margin);
+    border-radius: var(--radius);
+    background-color: rgb(255, 105, 180, 0.8);
+	width: -moz-max-content;
+	/* older FF */
+	width: -webkit-max-content;
+	/* older Chrome */
+	width: max-content;
+}
+
+#nav ul li.dropdown:hover ul.dropdown-content li {
+    display: list-item;
+    padding-right: 0;
+}
+
+#nav ul li ul li {
+    display: unset;
+}
+
+/* content style */
+
+#content {
+    position: absolute;
+    top: calc(var(--navheight) + var(--margin));
+    left: 0;
+    width: calc(100% - 2 * var(--margin) - 2 * var(--padding));
+    height: calc(
+        100%
+        - var(--navheight)
+        - var(--footerheight)
+        - 4 * var(--margin)
+        - 2 * var(--padding)
+    );
+    margin: var(--margin);
+    border-radius: var(--radius);
+    background-color: rgb(0, 0, 0, 0.8);
+    padding: var(--padding);
+    overflow: auto;
+    scrollbar-color: hotpink black;
+}
+
+img {
+    width: 100%;
+}
+
+/* gallery styling */
+
+.pswp-gallery {
+    display: flex;
+    overflow-x: overlay;
+    width: 100%;
+    height: 20vh;
+}
+
+.pswp-gallery a {
+    flex: 0;
+    padding: 5px;
+    position: relative;
+}
+
+#content .pswp-gallery img {
+     width: auto;
+     height: 100%;
+}
+
+#qa .pswp-gallery {
+    padding-inline-start: calc(2em + 24.1875px); /* plus width of "❗️ " */
+}
+
+.pswp-video-div video {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: auto;
+}
+
+/* scrollbar styling */
+
+#content::-webkit-scrollbar-track {
+    background: black;
+    width: calc(2 * --var(--radius));
+    border-radius: --var(--radius);
+}
+
+#content::-webkit-scrollbar-thumb {
+    background: hotpink;
+    width: calc(2 * --var(--radius));
+    border-radius: --var(--radius);
+}
+
+/* styling details / summary elements */
+
+summary {
+    color: darkgray;
+}
+
+#albums summary, #shows summary, #qa, #games summary {
+    list-style: none;
+}
+
+#albums summary::-webkit-details-marker,
+#shows summary::-webkit-details-marker,
+#qa summary::-webkit-details-marker,
+#games summary::-webkit-details-marker {
+    display: none;
+}
+
+#albums details summary::before { 
+    content: "🎸 ";
+}
+  
+#albums details details summary::before { 
+    content: "💿 ";
+}  
+
+#albums details details {
+    position: relative;
+    left: 1em;
+}
+
+#albums details details ol {
+    margin-block: 3px;
+    padding-inline-start: 2em;
+}
+
+details summary.video::before {
+    content: "🎥 ";
+}
+
+details summary.photo::before {
+    content: "📸 ";
+}
+
+details summary.audio::before {
+    content: "🎶 ";
+}
+
+#qa details summary::before {
+    content: "❓ ";
+}
+
+#qa details summary + p {
+    padding-inline-start: 2em;
+}
+
+#qa details p {
+    padding-inline-start: calc(2em + 24.1875px); /* plus width of "❗️ " */
+}
+
+#qa details summary + p::before {
+    content: "❗️ ";
+}
+
+#games details summary::before { 
+    content: "🎮 ";
+}
+  
+/* image scaling for different pages */
+
+#qa img {
+    width: 50%;
+}
+
+/* footer style */
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 2 * var(--margin));
+    height: var(--footerheight);
+    margin: var(--margin);
+	text-align: center;
+    display: block;
+}
+
+#footerbg {
+    background-color: black;
+    background-image: url(images/bYL7eut-emo-backround.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: auto 200%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    border-radius: var(--radius);
+    z-index: -1;
+}
+
+#footer ul {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    line-height: 1em;
+    width: calc(100% - 2 * var(--margin) - 2 * var(--margin));
+}
+
+#footer ul li {
+    display: inline-block;
+}
+
+#footer a {
+	-moz-transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out;
+	-ms-transition: color 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out;
+	color: #aaa;
+	text-decoration: none;
+}
+
+#footer a:active, #footer a:hover {
+	color: #666;
+}
+
+#footer ul li a.icon {
+	font-size: 2em;
+	padding-right: 1em;
+}
+
+#footer ul li:last-child a.icon {
+	padding-right: 0;
+}

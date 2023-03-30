@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="main.css">
+        <title>Sora Drums 🥁🎶✌️</title><link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+    <body>
+<!--#include file="nav.html" -->
+        <main id="content">
+            <p>
+                most of those Linux tricks work on macOS as well. if they depend on tools which are not present on macOS such as GNU coreutils, those can be installed via <a href="https://www.macports.org/">MacPorts</a>
+            </p>
+            <h2>file transfer over SSH using port forwards and tar</h2>
+            <ul>
+                <li>sometimes SFTP can be cumbersome, especially when files need to be transferred with the permissions of a cerain user that cannot log into SSH / SFTP directly</li>
+                <li>an easy solution is to forward a port (e.g. 6000) and to transfer the files using <code>tar</code></li>
+                <li>open the SSH connection as follows: <code>ssh user@server -L 6000:localhost:6000</code></li>
+                <li>
+                    to transfer files to the remote machine:
+                    <ul>
+                        <li>on the remote machine, run <code>cd destinationFolder && nc -l 6000 | tar xv</code></code></li>
+                        <li>on the local machine, run <code>tar cv file1 … fileN | nc localhost 6000</code></li>
+                    </ul>
+                </li>
+                <li>
+                    to transfer files from the remote machine:
+                    <ul>
+                        <li>on the remote machine, run <code>tar cv file1 … file N | nc -l 6000</code></code></li>
+                        <li>on the local machine, run <code>cd destinationFolder && nc localhost 6000 | tar xv</code></li>
+                    </ul>
+                </li>
+                <li>
+                    sometimes <code>nc</code> won't exit automatically after the transfer is completed
+                    <ul>
+                        <li>first, verify that everything was copied (comparing outputs of <code>ls -lR</code>)</li>
+                        <li>then, kill <code>nc</code> using ctrl+c</li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>batch actions on files using bash / zsh</h2>
+            <ul>
+                <li>often we want to do the same things with multiple files</li>
+                <li>
+                    an easy solution is to use a for-loop</code>
+                    <ul>
+                        <li><code>for i in *.html; do exampleCommand "$i"; done</code></li>
+                    </ul>
+                </li>
+                <li>
+                    some useful string manipulations for batch renaming:
+                    <ul>
+                        <li><code>${i%%pattern}</code> deletes the longest match of <code>pattern</code> from the back of <code>$i</code></code></li>
+                        <li><code>${i%pattern}</code> deletes the shortest match of <code>pattern</code> from the back of <code>$i</code></code></li>
+                        <li><code>${i##pattern}</code> deletes the shortest match of <code>pattern</code> from the front of <code>$i</code></code></li>
+                        <li><code>${i##pattern}</code> deletes the shortest match of <code>pattern</code> from the front of <code>$i</code></code></li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>reusing previous commands</h2>
+            <ul>
+                <li><code>!foo</code> executes the last command that started with <code>foo</code></li>
+                <li>
+                    <code>!!</code> executes the previous command
+                    <ul>
+                        <li>this also works with commands in front of it: <code>sudo !!</code> is great to re-run something as root</li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>curly braces in bash / zsh</h2>
+            <ul>
+                <li>
+                    curly braces expand as follows:
+                    <ul>
+                        <li><code>foo{bar,baz}</code> becomes <code>foobar foobaz</code></li>
+                    </ul>
+                </li>
+                <li>
+                    one example use case would be to copy a template to a number of new file names:
+                    <ul>
+                        <li><code>for i in music games media books; do cp {template,$i}.html; done</code></li>
+                    </ul>
+                </li>
+            </ul>
+            <h2>calculating in bash / zsh</h2>
+            <ul>
+                <li>
+                    sometimes, calculation is involved in deteming the parameters of a command
+                    <ul>
+                        <li>for example, when converting between blocks and bytes for <code>fdisk</code> or <code>dd</code></li>
+                    </ul>
+                </li>
+                <li>
+                    we can use the <code>$(())</code> syntax to evaluate arithmetic expressions:
+                    <ul>
+                        <li><code>echo $((113 * 3719))</code> will output <code>420247</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </main>
+<!--#include file="footer.html" -->
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
