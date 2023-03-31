@@ -190,12 +190,17 @@ img {
 }
 
 .photo-credit::before {
-    content: "📸 ";
+    content: "🤳 ";
 }
 
-.photo-credit {
+.photo-camera::before {
+    content: "📸 "
+}
+
+.photo-credit, .photo-camera {
     float: right;
     color: darkgray;
+    margin-left: 1em;
 }
 
 /*.pswp__custom-caption a {
