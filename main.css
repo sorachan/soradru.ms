@@ -177,6 +177,36 @@ img {
     height: auto;
 }
 
+.pswp__custom-caption {
+    background: rgb(255, 105, 180, 0.8);
+    width: calc(100% - 2 * var(--padding) - 2 * var(--margin));
+    max-width: 50vw;
+    padding: var(--padding);
+    border-radius: var(--radius);
+    position: absolute;
+    left: 50%;
+    bottom: var(--margin);
+    transform: translateX(-50%);
+}
+
+.photo-credit::before {
+    content: "📸 ";
+}
+
+.photo-credit {
+    float: right;
+    color: darkgray;
+}
+
+/*.pswp__custom-caption a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.hidden-caption-content {
+    display: none;
+}*/
+
 /* scrollbar styling */
 
 #content::-webkit-scrollbar-track {
