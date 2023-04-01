@@ -67,7 +67,8 @@ try:
                     if type(obj) == dict and "instaloader" in obj.keys():
                         if obj["instaloader"].get("node_type") == "Post":
                             node = obj["node"]
-                            alt += '<span class="insta-caption"><span class="icon fab fa-instagram"></span> '
+                            alt += '<span class="insta-caption"><a href="https://instagram.com/p/' \
+                                + node["shortcode"] + '"><span class="icon fab fa-instagram"></span></a> '
                             alt += node["edge_media_to_caption"]["edges"][0]["node"]["text"]
                             alt += '</span>'
                             time = datetime.fromtimestamp(node["taken_at_timestamp"])
@@ -77,8 +78,8 @@ try:
                             )
                             user = node["owner"]["username"]
                             credit = (
-                                '<a href="https://instagram.com/p/'
-                                + node["shortcode"]
+                                '<a href="https://instagram.com/'
+                                + user
                                 + '"><span class="icon fab fa-instagram"></span> '
                                 + user
                                 + '</a>'
