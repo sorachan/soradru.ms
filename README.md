@@ -54,7 +54,7 @@ I built a couple of helper scripts:
 
           "$img".credit -> images/credits/john.doe.credit
 
-* `update-all-galleries.sh` converts all filenames in `images/` gallery folders to lower case and calls `gallery-vue.py` on each gallery
+* `update-all-galleries.sh` converts all filenames in `images/` gallery folders to lower case (this helps with camera imports which use `.JPG` and other malformed extensions, so I don't have to treat them separately in my other scripts) and calls `gallery-vue.py` on each gallery
 
 ## what software do you use for development?
 
