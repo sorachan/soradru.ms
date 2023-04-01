@@ -84,3 +84,5 @@ feel free to:
 * open an issue
 * write an email to `sora+drums@dillbox.me`
 * contact me on my socials / Telegram (links in footer)
+
+[(especially if you wanna hire me as a freelance programmer!)](https://soradru.ms/coding.html)
