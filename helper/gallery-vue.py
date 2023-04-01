@@ -39,7 +39,7 @@ try:
         '        return {',
         '            imagesData: ['
     ]
-    for filename in sorted(os.listdir(folder)):
+    for filename in sorted(os.listdir(folder), reverse=True):
         path = os.path.join(folder, filename)
         extension = os.path.splitext(filename)[-1]
         if filename == '.DS_Store' \
