@@ -69,6 +69,8 @@ I built a couple of helper scripts:
 
         if I need anything that macOS doesn't offer like GNU coreutils, I have [MacPorts](https://www.macports.org) and [Homebrew](https://brew.sh/) at my disposal, Windows programs can be run in [Wine Crossover](https://github.com/Gcenx/winecx).
 
+        also, have fallen in love with their trackpad gestures, they make switching between windows / workspaces so easy and natural and let me forget that I'm working on a single screen laptop.
+
         some useful tools for macOS include:
 
         * [OpenInTerminal](https://github.com/Ji4n1ng/OpenInTerminal), a Finder extension which allows you to open folders in the Terminal or files in TextEdit
