@@ -6,11 +6,12 @@ import cv2
 import json
 from PIL import Image
 from PIL.ExifTags import TAGS
+from datetime import datetime
 
-usage = "usage: " + sys.argv[0] + "[gallery name (folder: images/name)] [indent level]"
+usage = "usage: " + sys.argv[0] + " [gallery name (folder: images/name)]"
 
 try:
-    _, name, indent = sys.argv
+    _, name = sys.argv
     folder = "images/" + name
     html = [
         '<div class="pswp-gallery" id="pswp-' + name + '">',
@@ -24,7 +25,9 @@ try:
         '        <img :src="image.thumbnailURL"',
         '            :alt="image.alt"',
         '            :data-credit="image.credit"',
-        '            :data-camera="image.camera"/>',
+        '            :data-camera="image.camera"',
+        '            :data-date="image.date"',
+        '            :data-location="image.location"/>',
         '    </a>',
         '</div>',
         '<script type="module">'
@@ -39,29 +42,73 @@ try:
     for filename in sorted(os.listdir(folder)):
         path = os.path.join(folder, filename)
         extension = os.path.splitext(filename)[-1]
-        if filename.endswith(".thumb.png") \
+        if filename == '.DS_Store' \
+            or filename.endswith(".thumb.png") \
             or filename.endswith(".alt") \
             or filename.endswith(".camera") \
-            or filename.endswith(".credit"):
+            or filename.endswith(".credit") \
+            or filename.endswith(".date") \
+            or filename.endswith(".loc") \
+            or filename.endswith(".json"):
             continue
         print("processing " + filename)
         if extension in [".jpg", ".png", ".webp"]:
             image = cv2.imread(path)
             height, width, _ = image.shape
             alt=""
-            credit = "own photography"
+            credit = ""
+            date = ""
+            location = ""
+            imagePIL = Image.open(path)
+            exif = imagePIL.getexif()
+            if os.path.isfile(path + ".json"):
+                try:
+                    obj = json.loads("".join(open(path + ".json").readlines()))
+                    if type(obj) == dict and "instaloader" in obj.keys():
+                        if obj["instaloader"].get("node_type") == "Post":
+                            node = obj["node"]
+                            alt += '<span class="insta-caption"><span class="icon fab fa-instagram"></span> '
+                            alt += node["edge_media_to_caption"]["edges"][0]["node"]["text"]
+                            alt += '</span>'
+                            time = datetime.fromtimestamp(node["taken_at_timestamp"])
+                            date = "%d.%d.%d %d:%02d:%02d" % (
+                                time.year, time.month, time.day,
+                                time.hour, time.minute, time.second
+                            )
+                            user = node["owner"]["username"]
+                            credit = (
+                                '<a href="https://instagram.com/p/'
+                                + node["shortcode"]
+                                + '"><span class="icon fab fa-instagram"></span> '
+                                + user
+                                + '</a>'
+                            )
+                            if type(node["location"]) == dict:
+                                location = node["location"]["name"]
+                except Exception as e:
+                    print("parsing of JSON file " + path + ".json failed!")
+                    print(e)
+            if os.path.isfile(path + ".alt"):
+                alt = "".join(open(path + ".alt").readlines()).strip()
+            if os.path.isfile(path + ".credit"):
+                credit = open(path + ".credit").readline().strip()
             if os.path.isfile(path + ".camera"):
                 camera = open(path + ".camera").readline().strip()
             else:
-                imagePIL = Image.open(path)
-                exif = imagePIL.getexif()
                 make = exif.get(list(TAGS.keys())[list(TAGS.values()).index("Make")], "")
                 model = exif.get(list(TAGS.keys())[list(TAGS.values()).index("Model")], "")
                 camera = " ".join([make, model]).strip()
-            if os.path.isfile(path + ".alt"):
-                alt = open(path + ".alt").readline().strip()
-            if os.path.isfile(path + ".credit"):
-                credit = open(path + ".credit").readline().strip()
+            if not date:
+                if os.path.isfile(path + ".date"):
+                    date = open(path + ".date").readline().strip()
+                else:
+                    date = exif.get(list(TAGS.keys())[list(TAGS.values()).index("DateTime")], "")
+                    if date:
+                        day, time = date.split(" ")
+                        day = ".".join([N.lstrip("0") for N in day.split(":")])
+                        date = " ".join([day, time])
+            if os.path.isfile(path + ".loc"):
+                location = open(path + ".loc").readline().strip()
             thumbPath = path + ".thumb.png"
             if not os.path.isfile(path + ".thumb.png"):
                 thumbHeight = 500
@@ -76,7 +123,9 @@ try:
                 "                    height: " + str(height) + ",",
                 "                    alt: " + json.dumps(alt) + ",",
                 "                    credit: " + json.dumps(credit) + ",",
-                "                    camera: " + json.dumps(camera),
+                "                    camera: " + json.dumps(camera) + ",",
+                "                    date: " + json.dumps(date) + ",",
+                "                    location: " + json.dumps(location),
                 "                },"
             ]
         if extension in [".mp4", ".avi", ".mkv", ".webm"]:
@@ -114,17 +163,30 @@ try:
         "            let captionHTML = '';",
         "            let creditHTML = '';",
         "            let cameraHTML = '';",
+        "            let dateHTML = '';",
+        "            let locationHTML = '';",
         "            if (currSlideElement) {",
         "                captionHTML = currSlideElement.querySelector('img').getAttribute('alt');",
         "                creditHTML = currSlideElement.querySelector('img').getAttribute('data-credit');",
         "                cameraHTML = currSlideElement.querySelector('img').getAttribute('data-camera');",
+        "                dateHTML = currSlideElement.querySelector('img').getAttribute('data-date');",
+        "                locationHTML = currSlideElement.querySelector('img').getAttribute('data-location');",
         "            }",
-        "            el.innerHTML = captionHTML || '';",
+        "            el.innerHTML = '';",
+        "            if (captionHTML) {",
+        """                el.innerHTML += '<div class="photo-caption">' + captionHTML;""",
+        "            }",
         "            if (cameraHTML) {",
         """                el.innerHTML += '<div class="photo-camera">' + cameraHTML;""",
         "            }",
         "            if (creditHTML) {",
         """                el.innerHTML += '<div class="photo-credit">' + creditHTML;""",
+        "            }",
+        "            if (dateHTML) {",
+        """                el.innerHTML += '<div class="photo-date">' + dateHTML;""",
+        "            }",
+        "            if (locationHTML) {",
+        """                el.innerHTML += '<div class="photo-location">' + locationHTML;""",
         "            }",
         "        });}",
         "    });",
@@ -135,8 +197,6 @@ try:
     html += [
         '</script>'
     ]
-    pad = int(indent) * '    '
-    html = [pad + line for line in html]
     gallery = open("./galleries/" + name + ".html", "w")
     gallery.write("\n".join(html))
     gallery.flush()

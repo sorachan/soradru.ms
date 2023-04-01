@@ -153,15 +153,22 @@ img {
     height: 20vh;
 }
 
-.pswp-gallery a {
+:not(.pswp-gallery) .pswp-gallery a {
     flex: 0;
     padding: 5px;
     position: relative;
 }
 
-#content .pswp-gallery img {
+#content:not(.gallery-page) .pswp-gallery img {
      width: auto;
      height: 100%;
+}
+
+#content.gallery-page .pswp-gallery {
+    display: grid;
+    width: 100%;
+    height: max-content;
+    grid-template-columns: repeat(5,1fr);
 }
 
 #qa .pswp-gallery {
@@ -194,13 +201,34 @@ img {
 }
 
 .photo-camera::before {
-    content: "📸 "
+    content: "📸 ";
 }
 
-.photo-credit, .photo-camera {
+.photo-date::before {
+    content: "📆 ";
+}
+
+.photo-location::before {
+    content: "📍 ";
+}
+
+.photo-credit, .photo-camera, .photo-date, .photo-location {
     float: right;
     color: darkgray;
     margin-left: 1em;
+}
+
+.photo-caption {
+    white-space: pre-wrap;
+}
+
+.insta-caption {
+    display: block;
+    border-left: 0.2em solid darkgray;
+    padding-left: 0.5em;
+    margin-left: 0.5em;
+    font-style: italic;
+    color: darkgray;
 }
 
 /*.pswp__custom-caption a {

@@ -6,12 +6,20 @@
     </head>
     <body>
         <script src="vue.global.js"></script>
-<!--#include file="nav.html" -->
+        <!--#include file="nav.html"-->
         <main id="content">
             <h2>programming 🧑‍💻</h2>
             <ul>
                 <li>if you need a freelance developer for a software project, hit me up!</li>
-                <li>my main focus so far has been small console / graphical tools and web development (frontend and backend), not too experienced with apps but sure I could wrap my head around app development as well</li>
+                <li>
+                    my main focus so far has been small console / graphical tools and web development (frontend and backend), not too experienced with apps but sure I could wrap my head around app development as well
+                    <ul>
+                        <li>I'm not a <em>web designer</em> though, I'm not the person you're looking for if you want a beautiful CSS layout, my CSS skills reach about far enough to create a personal webpage intended to look like a modern responsive version of a 2007 emo blog</li>
+                    </ul>
+                </li>
+                <li>
+                    I have no problem tackling tasks that are new to me such as working with a new language or framework. 70% of programming boils down to understanding basic language-independent concepts and consulting StackOverflow / documentation anyway (never forget to RTFM!)
+                </li>
                 <li>I write clean and commented code and have experience with Scrum development</li>
                 <li>
                     language skills:
@@ -27,13 +35,21 @@
                         <li>CSS (basic)</li>
                     </ul>
                 </li>
-                <li>I built this website from scratch without any templates / boilerplates (but I decided to include Vue.js as a standalone script to facilitate gallery creation)</li>
+                <li>
+                    I built this website from scratch without any templates / boilerplates
+                    <ul>
+                        <li>but I decided to include PhotoSwipe as a vanilla JS gallery solution and Vue.js as a standalone script to facilitate gallery creation</li>
+                        <li>I wrote a Python script which traverses an image folder, reads the camera make / model and date / time from the EXIF metadata and automatically generates thumbnails and the include HTML / JS / Vue code for the corresponding gallery, as well as a Bash script to help me caption and credit pictures, and extended PhotoSwipe to display credit, camera and date info</li>
+                        <li>the <a href="https://github.com/sorachan/soradru.ms">source code for this website</a> is on my GitHub</li>
+                    </ul>
+
+                </li>
                 <li>check out <a href="http://mines.dillbox.me">my Minesweeper clone</a>, so conservatively written it works on anything from IE6 to Chrome Mobile (tap the smiley for instructions), won a small coding competition with that (sorry, this piece of code is uncommented, wrote it in a hurry)</li>
                 <li>check out my GitHub (link in the footer) to see some of my past projects</li>
                 <li>might seem weird to have a drummer coding your stuff but then again, Dream Theater's drummer Mike Mangini used to write code for NASA so why not</li>
             </ul>
         </main>
-<!--#include file="footer.html" -->
+        <!--#include file="footer.html"-->
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
