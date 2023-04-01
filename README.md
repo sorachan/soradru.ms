@@ -40,7 +40,7 @@ I built a couple of helper scripts:
     * if it finds a JSON file from [Instaloader](https://github.com/instaloader/instaloader) which contains metadata from the downloaded Instagram posts, it automatically adds the caption, date, location and a link to the original post
     * custom caption, date, location, camera and photography credit information can be given in `.alt`, `.date`, `.loc`, `.camera` and `.credit` files, the latter of which I create as HTML snippets in the folder `images/credits/` and link to them; the information from these files overrides information parsed from the instaloader JSON
 * `get-exif.py [image file] (optional: [property])` is a helper tool for retrieving all properties or one specific property from the EXIF image metadata
-* `photo-info.sh [gallery name]` is a simple console-based editor which traverses a gallery folder, displays the images and generates `.alt` files and `.credit` links from user input
+* `photo-info.sh [gallery name]` is a simple console-based editor which traverses a gallery folder, displays the images and generates `.alt` and `.loc` files and `.credit` links from user input
     * it uses [pxl](https://github.com/ichinaski/pxl) to display images in the terminal which works surprisingly well if the terminal text size is small enough
     * if an instaloader caption is found, it can be copied into the `.alt` file
     * an existing caption can be:
