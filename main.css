@@ -214,7 +214,7 @@ img {
 
 .photo-credit, .photo-camera, .photo-date, .photo-location {
     float: right;
-    color: darkgray;
+    color: black;
     margin-left: 1em;
 }
 
@@ -228,7 +228,7 @@ img {
     padding-left: 0.5em;
     margin-left: 0.5em;
     font-style: italic;
-    color: darkgray;
+    color: black;
 }
 
 /*.pswp__custom-caption a {
