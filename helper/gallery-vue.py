@@ -44,6 +44,7 @@ try:
         path = os.path.join(folder, filename)
         base, extension = os.path.splitext(filename)
         if filename == '.DS_Store' \
+            or filename == '.ds_store' \
             or filename.endswith(".thumb.png") \
             or filename.endswith(".alt") \
             or filename.endswith(".camera") \
@@ -101,15 +102,14 @@ try:
                 make = exif.get(list(TAGS.keys())[list(TAGS.values()).index("Make")], "")
                 model = exif.get(list(TAGS.keys())[list(TAGS.values()).index("Model")], "")
                 camera = " ".join([make, model]).strip()
-            if not date:
-                if os.path.isfile(path + ".date"):
-                    date = open(path + ".date").readline().strip()
-                else:
-                    date = exif.get(list(TAGS.keys())[list(TAGS.values()).index("DateTime")], "")
-                    if date:
-                        day, time = date.split(" ")
-                        day = ".".join([N.lstrip("0") for N in day.split(":")])
-                        date = " ".join([day, time])
+            if os.path.isfile(path + ".date"):
+                date = open(path + ".date").readline().strip()
+            elif not date:
+                date = exif.get(list(TAGS.keys())[list(TAGS.values()).index("DateTime")], "")
+                if date:
+                    day, time = date.split(" ")
+                    day = ".".join([N.lstrip("0") for N in day.split(":")])
+                    date = " ".join([day, time])
             if os.path.isfile(path + ".loc"):
                 location = open(path + ".loc").readline().strip()
             thumbPath = path + ".thumb.png"
@@ -123,7 +123,7 @@ try:
             if os.path.isfile(os.path.join(folder, base) + ".mkv"):
                 video = os.path.join(folder, base) + ".mkv"
             if os.path.isfile(os.path.join(folder, base) + ".webm"):
-                os.path.join(folder, base) + ".webm"
+                video = os.path.join(folder, base) + ".webm"
             js += [
                 "                {",
                 "                    largeURL: " + json.dumps(path) + ",",
@@ -150,6 +150,36 @@ try:
                 cv2.imwrite(thumbPath, thumb)
             vid.release()
             # TODO
+            alt=""
+            credit = ""
+            date = ""
+            location = ""
+            camera = ""
+            video = path
+            if os.path.isfile(path + ".alt"):
+                alt = "".join(open(path + ".alt").readlines()).strip()
+            if os.path.isfile(path + ".credit"):
+                credit = open(path + ".credit").readline().strip()
+            if os.path.isfile(path + ".camera"):
+                camera = open(path + ".camera").readline().strip()
+            if os.path.isfile(path + ".date"):
+                date = open(path + ".date").readline().strip()
+            if os.path.isfile(path + ".loc"):
+                location = open(path + ".loc").readline().strip()
+            js += [
+                "                {",
+                "                    largeURL: " + json.dumps(thumbPath) + ",",
+                "                    thumbnailURL: " + json.dumps(thumbPath) + ",",
+                "                    width: " + str(width) + ",",
+                "                    height: " + str(height) + ",",
+                "                    alt: " + json.dumps(alt) + ",",
+                "                    credit: " + json.dumps(credit) + ",",
+                "                    camera: " + json.dumps(camera) + ",",
+                "                    date: " + json.dumps(date) + ",",
+                "                    location: " + json.dumps(location) + ",",
+                "                    video: " + json.dumps(video),
+                "                },"
+            ]
         if extension == ".lnk":
             pass # TODO
     js += [
@@ -215,6 +245,8 @@ try:
         "        content.videoDiv = document.createElement('div');",
         "        content.videoDiv.classList.add('video-div');",
         "        content.videoDiv.classList.add('pswp__img');",
+        "        const wrapper = document.createElement('div');",
+        "        wrapper.classList.add('video-wrapper');",
         "        const videoElement = document.createElement('video');",
         "        videoElement.src = content.data.element.dataset.video;",
         "        const overlay = document.createElement('div');",
@@ -231,8 +263,9 @@ try:
         "        button.classList.add('video-button');",
         "        button.innerHTML = '▶️';",
         "        overlay.appendChild(button);",
-        "        content.videoDiv.appendChild(videoElement);",
-        "        content.videoDiv.appendChild(overlay);",
+        "        wrapper.appendChild(videoElement);",
+        "        wrapper.appendChild(overlay);",
+        "        content.videoDiv.appendChild(wrapper);"
         "        content.state = 'loading';",
         "        content.onLoaded();",
         "    }",

@@ -233,6 +233,11 @@ img {
 
 /* video addon for gallery */
 
+.video-wrapper video {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
 .video-overlay {
     position: absolute;
     left: 0;
