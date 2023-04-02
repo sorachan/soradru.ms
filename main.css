@@ -231,14 +231,28 @@ img {
     color: black;
 }
 
-/*.pswp__custom-caption a {
-    color: #fff;
-    text-decoration: underline;
+/* video addon for gallery */
+
+.video-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0, 0.15);
 }
 
-.hidden-caption-content {
+.video-button {
+    position: relative;
+    font-size: 10em;
+}
+
+.video-overlay.playing {
     display: none;
-}*/
+}
 
 /* scrollbar styling */
 

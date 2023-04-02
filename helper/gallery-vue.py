@@ -21,7 +21,8 @@ try:
         '        :data-pswp-width="image.width"',
         '        :data-pswp-height="image.height"',
         '        target="_blank"',
-        '        rel="noreferrer">',
+        '        rel="noreferrer"',
+        '        :data-video="image.video">',
         '        <img :src="image.thumbnailURL"',
         '            :alt="image.alt"',
         '            :data-credit="image.credit"',
@@ -41,7 +42,7 @@ try:
     ]
     for filename in sorted(os.listdir(folder), reverse=True):
         path = os.path.join(folder, filename)
-        extension = os.path.splitext(filename)[-1]
+        base, extension = os.path.splitext(filename)
         if filename == '.DS_Store' \
             or filename.endswith(".thumb.png") \
             or filename.endswith(".alt") \
@@ -59,6 +60,7 @@ try:
             credit = ""
             date = ""
             location = ""
+            video = ""
             imagePIL = Image.open(path)
             exif = imagePIL.getexif()
             if os.path.isfile(path + ".json"):
@@ -116,6 +118,12 @@ try:
                 thumbWidth = int(width * thumbHeight / height)
                 thumb = cv2.resize(image, (thumbWidth, thumbHeight))
                 cv2.imwrite(thumbPath, thumb)
+            if os.path.isfile(os.path.join(folder, base) + ".mp4"):
+                video = os.path.join(folder, base) + ".mp4"
+            if os.path.isfile(os.path.join(folder, base) + ".mkv"):
+                video = os.path.join(folder, base) + ".mkv"
+            if os.path.isfile(os.path.join(folder, base) + ".webm"):
+                os.path.join(folder, base) + ".webm"
             js += [
                 "                {",
                 "                    largeURL: " + json.dumps(path) + ",",
@@ -126,7 +134,8 @@ try:
                 "                    credit: " + json.dumps(credit) + ",",
                 "                    camera: " + json.dumps(camera) + ",",
                 "                    date: " + json.dumps(date) + ",",
-                "                    location: " + json.dumps(location),
+                "                    location: " + json.dumps(location) + ",",
+                "                    video: " + json.dumps(video),
                 "                },"
             ]
         if extension in [".mp4", ".avi", ".mkv", ".webm"]:
@@ -134,7 +143,8 @@ try:
             width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
             thumbPath = path + ".thumb.png"
-            if not os.path.isfile(thumbPath):
+            if not os.path.isfile(thumbPath) \
+                and not os.path.isfile(os.path.join(folder, base) + ".jpg.thumb.png"):
                 vid.set(cv2.CAP_PROP_POS_MSEC, 10000)
                 _, thumb = vid.read()
                 cv2.imwrite(thumbPath, thumb)
@@ -192,7 +202,45 @@ try:
         "        });}",
         "    });",
         "});",
-        'lightbox_' + name + '.init();'
+        "lightbox_" + name + ".addFilter('itemData', (itemData, index) => {",
+        "    const video = itemData.element.dataset.video;",
+        "    if (video) {",
+        "        itemData.video = video;",
+        "    }",
+        "    return itemData;",
+        "});",
+        "lightbox_" + name + ".on('contentLoad', (e) => {",
+        "    const { content, isLazy } = e;",
+        "    if (content.data.element.dataset.video) {",
+        "        content.videoDiv = document.createElement('div');",
+        "        content.videoDiv.classList.add('video-div');",
+        "        content.videoDiv.classList.add('pswp__img');",
+        "        const videoElement = document.createElement('video');",
+        "        videoElement.src = content.data.element.dataset.video;",
+        "        const overlay = document.createElement('div');",
+        "        overlay.classList.add('video-overlay');",
+        "        overlay.addEventListener('click', () => {",
+        "            overlay.classList.add('playing');",
+        "            videoElement.play();"
+        "        });",
+        "        const button = document.createElement('div');",
+        "        button.classList.add('video-button');",
+        "        button.innerHTML = '▶️';",
+        "        overlay.appendChild(button);",
+        "        content.videoDiv.appendChild(videoElement);",
+        "        content.videoDiv.appendChild(overlay);",
+        "        content.state = 'loading';",
+        "        content.onLoaded();",
+        "    }",
+        "});",
+        "lightbox_" + name + ".on('contentAppend', (e) => {",
+        "    const { content } = e;",
+        "    if (content.videoDiv && !content.videoDiv.parentNode) {",
+        "        e.preventDefault();",
+        "        content.slide.container.appendChild(content.videoDiv);",
+        "    }",
+        "});",
+        "lightbox_" + name + ".init();"
     ]
     html += ['    ' + line for line in js]
     html += [
