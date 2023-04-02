@@ -223,6 +223,10 @@ try:
         "            overlay.classList.add('playing');",
         "            videoElement.play();"
         "        });",
+        "        videoElement.addEventListener('click', () => {",
+        "            videoElement.pause();",
+        "            overlay.classList.remove('playing');",
+        "        });",
         "        const button = document.createElement('div');",
         "        button.classList.add('video-button');",
         "        button.innerHTML = '▶️';",
