@@ -139,13 +139,14 @@ try:
                 "                },"
             ]
         if extension in [".mp4", ".avi", ".mkv", ".webm"]:
+            if os.path.isfile(os.path.join(folder, base) + ".jpg"):
+                continue
             vid = cv2.VideoCapture(path)
             width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
             thumbPath = path + ".thumb.png"
-            if not os.path.isfile(thumbPath) \
-                and not os.path.isfile(os.path.join(folder, base) + ".jpg.thumb.png"):
-                vid.set(cv2.CAP_PROP_POS_MSEC, 10000)
+            if not os.path.isfile(thumbPath):
+                vid.set(cv2.CAP_PROP_POS_MSEC, 1000)
                 _, thumb = vid.read()
                 cv2.imwrite(thumbPath, thumb)
             vid.release()
@@ -275,6 +276,13 @@ try:
         "    if (content.videoDiv && !content.videoDiv.parentNode) {",
         "        e.preventDefault();",
         "        content.slide.container.appendChild(content.videoDiv);",
+        "    }",
+        "});",
+        "lightbox_" + name + ".on('contentRemove', (e) => {",
+        "    const { content } = e;",
+        "    if (content.videoDiv && content.videoDiv.parentNode) {",
+        "        e.preventDefault();",
+        "        content.videoDiv.remove();",
         "    }",
         "});",
         "lightbox_" + name + ".init();"
