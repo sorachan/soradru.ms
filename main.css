@@ -148,16 +148,15 @@ img {
 
 .pswp-gallery {
     display: flex;
-    overflow-x: overlay;
+    overflow-x: auto;
     width: 100%;
     height: 20vh;
 }
 
-:not(.pswp-gallery) .pswp-gallery a {
+.pswp-gallery a {
     flex: 0;
     padding: 5px;
     position: relative;
-    align-self: center;
 }
 
 #content:not(.gallery-page) .pswp-gallery img {
@@ -169,26 +168,30 @@ img {
     display: grid;
     width: 100%;
     height: max-content;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(7,1fr);
+}
+
+#content.gallery-page .pswp-gallery a {
+    align-self: center;
 }
 
 #qa .pswp-gallery {
     padding-inline-start: calc(2em + 24.1875px); /* plus width of "❗️ " */
 }
 
-.pswp-video-div video {
+/*.pswp-video-div video {
     transform: translate(-50%, -50%);
     position: absolute;
     top: 50%;
     left: 50%;
     width: 80vw;
     height: auto;
-}
+}*/
 
 .pswp__custom-caption {
     background: rgb(255, 105, 180, 0.8);
     width: calc(100% - 2 * var(--padding) - 2 * var(--margin));
-    max-width: 50vw;
+    max-width: 75vw;
     padding: var(--padding);
     border-radius: var(--radius);
     position: absolute;
@@ -232,11 +235,27 @@ img {
     color: black;
 }
 
+.pswp__custom-caption, .pswp__counter {
+    font-size: 2vh;
+}
+
 /* video addon for gallery */
 
 .video-wrapper video {
     max-width: 100vw;
     max-height: 100vh;
+}
+
+/*.iframe-wrapper iframe {
+    width: 100vw;
+    height: 100vh;
+}*/
+
+.video-overlay, .iframe-overlay {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0, 0.15);
 }
 
 .video-overlay {
@@ -245,19 +264,34 @@ img {
     top: 0;
     height: 100%;
     width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(0, 0, 0, 0.15);
 }
 
-.video-button {
+.iframe-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.video-button, .iframe-button {
     position: relative;
     font-size: 10em;
 }
 
-.video-overlay.playing {
+.video-overlay.playing, .iframe-overlay.playing {
     display: none;
+}
+
+.iframe-warning {
+    position: absolute;
+    top: var(--padding);
+    background: rgb(255, 240, 31, .8);
+    color: black;
+    text-align: center;
+    width: calc(100% - 2 * var(--margin));
+    border-radius: var(--radius);
+    z-index: 420;
 }
 
 /* scrollbar styling */
@@ -406,4 +440,116 @@ details summary.audio::before {
 
 #footer ul li:last-child a.icon {
 	padding-right: 0;
+}
+
+/* embeds */
+
+#content .tiktok-embed {
+    width: 100%;
+}
+
+/* mobile layout */
+
+#nav-button {
+    display: none;
+}
+
+.mobile-info {
+    display: none;
+}
+
+.grey-button {
+    background: rgb(169, 169, 169, 0.8);
+    padding: 1em;
+    margin: calc(3 * var(--margin));
+    border-radius: var(--radius);
+}
+
+.contains-button {
+    line-height: 3em;
+}
+
+@media screen and (max-width: 1200px) {
+    body {
+        font-size: 32px;
+    }
+    
+    #content {
+        top: 0;
+        left: 0;
+        width: calc(100% - 2 * var(--margin) - 2 * var(--padding));
+        height: calc(
+            100%
+            - var(--footerheight)
+            - 3 * var(--margin)
+            - 2 * var(--padding)
+        );
+    }
+
+    #nav-button {
+        display: unset;
+        position: absolute;
+        z-index: 42;
+        top: 0;
+        right: 0;
+    }
+    
+    #nav {
+        display: none;
+    }
+
+    #nav.open {
+        display: block;
+        position: absolute;
+        z-index: 21;
+        top: 0;
+        left: 0;
+        width: calc(100% - 2 * var(--margin) - 2 * var(--padding));
+        height: calc(100% - 2 * var(--margin) - 2 * var(--padding));
+        overflow: auto;
+        font-size: 3vh;
+    }
+
+    #nav.open ul li {
+        display: block;
+        padding-right: unset;
+    }
+
+    #nav.open .dropdown {
+        padding-bottom: unset;
+        position: unset;
+    }
+
+    #nav ul li.dropdown:hover ul.dropdown-content {
+        position: absolute;
+        z-index: 22;
+        top: calc(-3 * var(--padding));
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        font-size: 3vh;
+        pointer-events: none;
+    }
+    
+    #nav ul li.dropdown.cooldown:hover ul.dropdown-content {
+        pointer-events: unset;
+    }
+    
+    .mobile-info {
+        display: unset;
+    }
+
+    #footer ul li a.icon {
+        padding-right: 0.75em;
+    }
+
+    #content.gallery-page .pswp-gallery {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .pswp__button--close {
+        transform: scale(3);
+        margin: var(--margin);
+    }
 }

@@ -7,6 +7,9 @@ import json
 from PIL import Image
 from PIL.ExifTags import TAGS
 from datetime import datetime
+import requests
+import re
+import pyktok as pyk
 
 usage = "usage: " + sys.argv[0] + " [gallery name (folder: images/name)]"
 
@@ -22,7 +25,8 @@ try:
         '        :data-pswp-height="image.height"',
         '        target="_blank"',
         '        rel="noreferrer"',
-        '        :data-video="image.video">',
+        '        :data-video="image.video"',
+        '        :data-extsrc="image.extsrc">',
         '        <img :src="image.thumbnailURL"',
         '            :alt="image.alt"',
         '            :data-credit="image.credit"',
@@ -70,10 +74,11 @@ try:
                     if type(obj) == dict and "instaloader" in obj.keys():
                         if obj["instaloader"].get("node_type") == "Post":
                             node = obj["node"]
-                            alt += '<span class="insta-caption"><a href="https://instagram.com/p/' \
-                                + node["shortcode"] + '"><span class="icon fab fa-instagram"></span></a> '
-                            alt += node["edge_media_to_caption"]["edges"][0]["node"]["text"]
-                            alt += '</span>'
+                            alt = '<span class="insta-caption"><a href="https://instagram.com/p/' \
+                                + node["shortcode"] \
+                                + '"><span class="icon fab fa-instagram"></span></a> ' \
+                                + node["edge_media_to_caption"]["edges"][0]["node"]["text"] \
+                                + '</span>'
                             time = datetime.fromtimestamp(node["taken_at_timestamp"])
                             date = "%d.%d.%d %d:%02d:%02d" % (
                                 time.year, time.month, time.day,
@@ -112,12 +117,12 @@ try:
                     date = " ".join([day, time])
             if os.path.isfile(path + ".loc"):
                 location = open(path + ".loc").readline().strip()
-            thumbPath = path + ".thumb.png"
+            thumb_path = path + ".thumb.png"
             if not os.path.isfile(path + ".thumb.png"):
                 thumbHeight = 500
                 thumbWidth = int(width * thumbHeight / height)
                 thumb = cv2.resize(image, (thumbWidth, thumbHeight))
-                cv2.imwrite(thumbPath, thumb)
+                cv2.imwrite(thumb_path, thumb)
             if os.path.isfile(os.path.join(folder, base) + ".mp4"):
                 video = os.path.join(folder, base) + ".mp4"
             if os.path.isfile(os.path.join(folder, base) + ".mkv"):
@@ -127,7 +132,7 @@ try:
             js += [
                 "                {",
                 "                    largeURL: " + json.dumps(path) + ",",
-                "                    thumbnailURL: " + json.dumps(thumbPath) + ",",
+                "                    thumbnailURL: " + json.dumps(thumb_path) + ",",
                 "                    width: " + str(width) + ",",
                 "                    height: " + str(height) + ",",
                 "                    alt: " + json.dumps(alt) + ",",
@@ -144,13 +149,12 @@ try:
             vid = cv2.VideoCapture(path)
             width = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH))
             height = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT))
-            thumbPath = path + ".thumb.png"
-            if not os.path.isfile(thumbPath):
+            thumb_path = path + ".thumb.png"
+            if not os.path.isfile(thumb_path):
                 vid.set(cv2.CAP_PROP_POS_MSEC, 1000)
                 _, thumb = vid.read()
-                cv2.imwrite(thumbPath, thumb)
+                cv2.imwrite(thumb_path, thumb)
             vid.release()
-            # TODO
             alt=""
             credit = ""
             date = ""
@@ -169,8 +173,8 @@ try:
                 location = open(path + ".loc").readline().strip()
             js += [
                 "                {",
-                "                    largeURL: " + json.dumps(thumbPath) + ",",
-                "                    thumbnailURL: " + json.dumps(thumbPath) + ",",
+                "                    largeURL: " + json.dumps(thumb_path) + ",",
+                "                    thumbnailURL: " + json.dumps(thumb_path) + ",",
                 "                    width: " + str(width) + ",",
                 "                    height: " + str(height) + ",",
                 "                    alt: " + json.dumps(alt) + ",",
@@ -182,7 +186,121 @@ try:
                 "                },"
             ]
         if extension == ".lnk":
-            pass # TODO
+            link = "".join(open(path).readlines()).strip()
+            alt=""
+            camera=""
+            credit = ""
+            date = ""
+            location = ""
+            extsrc = ""
+            thumb_path = ""
+            if "youtube.com" in link or "youtu.be" in link:
+                if "watch?v=" in link:
+                    id = link.split("watch?v=")[-1]
+                elif ".be/" in link:
+                    id = link.split(".be/")[-1]
+                extsrc = "https://www.youtube.com/embed/" + id
+                thumb_path = "https://img.youtube.com/vi/" + id + "/0.jpg"
+                thumb = requests.get(thumb_path)
+                with open("/tmp/thumb.png", "wb") as f:
+                    f.write(thumb.content)
+                image = cv2.imread("/tmp/thumb.png")
+                height, width, _ = image.shape
+                if os.path.isfile(path + ".alt"):
+                    alt = "".join(open(path + ".alt").readlines()).strip()
+                if os.path.isfile(path + ".credit"):
+                    credit = open(path + ".credit").readline().strip()
+                if os.path.isfile(path + ".camera"):
+                    camera = open(path + ".camera").readline().strip()
+                if os.path.isfile(path + ".date"):
+                    date = open(path + ".date").readline().strip()
+                if os.path.isfile(path + ".loc"):
+                    location = open(path + ".loc").readline().strip()
+                js += [
+                    "                {",
+                    "                    largeURL: " + json.dumps(thumb_path) + ",",
+                    "                    thumbnailURL: " + json.dumps(thumb_path) + ",",
+                    "                    width: " + str(width) + ",",
+                    "                    height: " + str(height) + ",",
+                    "                    alt: " + json.dumps(alt) + ",",
+                    "                    credit: " + json.dumps(credit) + ",",
+                    "                    camera: " + json.dumps(camera) + ",",
+                    "                    date: " + json.dumps(date) + ",",
+                    "                    location: " + json.dumps(location) + ",",
+                    "                    extsrc: " + json.dumps(extsrc),
+                    "                },"
+                ]
+            if "vimeo.com" in link:
+                id = link.split("/")[-1]
+                extsrc = "https://player.vimeo.com/video/" + id
+                thumb_url = "https://vimeo.com/api/v2/video/" + id + ".json"
+                thumb_req = requests.get(thumb_url)
+                thumb_data = thumb_req.json()
+                thumb_path = thumb_data[0]["thumbnail_large"].replace("http", "https")
+                thumb = requests.get(thumb_path)
+                with open("/tmp/thumb.png", "wb") as f:
+                    f.write(thumb.content)
+                image = cv2.imread("/tmp/thumb.png")
+                height, width, _ = image.shape
+                if os.path.isfile(path + ".alt"):
+                    alt = "".join(open(path + ".alt").readlines()).strip()
+                if os.path.isfile(path + ".credit"):
+                    credit = open(path + ".credit").readline().strip()
+                if os.path.isfile(path + ".camera"):
+                    camera = open(path + ".camera").readline().strip()
+                if os.path.isfile(path + ".date"):
+                    date = open(path + ".date").readline().strip()
+                if os.path.isfile(path + ".loc"):
+                    location = open(path + ".loc").readline().strip()
+                js += [
+                    "                {",
+                    "                    largeURL: " + json.dumps(thumb_path) + ",",
+                    "                    thumbnailURL: " + json.dumps(thumb_path) + ",",
+                    "                    width: " + str(width) + ",",
+                    "                    height: " + str(height) + ",",
+                    "                    alt: " + json.dumps(alt) + ",",
+                    "                    credit: " + json.dumps(credit) + ",",
+                    "                    camera: " + json.dumps(camera) + ",",
+                    "                    date: " + json.dumps(date) + ",",
+                    "                    location: " + json.dumps(location) + ",",
+                    "                    extsrc: " + json.dumps(extsrc),
+                    "                },"
+                ]
+            if "tiktok.com" in link:
+                # TODO, TikTok embed are just too much of a PITA rn
+                tok = pyk.get_tiktok_json(link)
+                with open("/tmp/tokjson", "w") as f:
+                    f.write(json.dumps(tok, indent=4))
+                try:
+                    item_dict = tok["ItemModule"]
+                    id = list(item_dict.keys())[0]
+                    item = item_dict[id]
+                    alt = '<span class="insta-caption"><a href="' \
+                        + tok["SEOState"]["metaParams"]["canonicalHref"] \
+                        + '"><span class="icon fab fa-tiktok"></span></a> ' \
+                        + item["desc"] + '</span>'
+                    time = datetime.fromtimestamp(int(item["createTime"]))
+                    date = "%d.%d.%d %d:%02d:%02d" % (
+                        time.year, time.month, time.day,
+                        time.hour, time.minute, time.second
+                    )
+                    user = item["author"]
+                    credit = (
+                        '<a href="https://tiktok.com/@'
+                        + user
+                        + '"><span class="icon fab fa-tiktok"></span> '
+                        + user
+                        + '</a>'
+                    )
+                    if type(item["poi"]) == dict:
+                        location = item["poi"]["name"]
+                except Exception as e:
+                    print("parsing of JSON file " + path + ".json failed!")
+                    print(e)
+            if "vk.com" in link:
+                pass # TODO
+            if "facebook.com" in link:
+                pass # TODO
     js += [
         '            ]',
         '        }',
@@ -235,8 +353,12 @@ try:
         "});",
         "lightbox_" + name + ".addFilter('itemData', (itemData, index) => {",
         "    const video = itemData.element.dataset.video;",
+        "    const extsrc = itemData.element.dataset.extsrc;",
         "    if (video) {",
         "        itemData.video = video;",
+        "    }",
+        "    if (extsrc) {",
+        "        itemData.extsrc = extsrc;",
         "    }",
         "    return itemData;",
         "});",
@@ -254,7 +376,7 @@ try:
         "        overlay.classList.add('video-overlay');",
         "        overlay.addEventListener('click', () => {",
         "            overlay.classList.add('playing');",
-        "            videoElement.play();"
+        "            videoElement.play();",
         "        });",
         "        videoElement.addEventListener('click', () => {",
         "            videoElement.pause();",
@@ -270,7 +392,42 @@ try:
         "        overlay.appendChild(button);",
         "        wrapper.appendChild(videoElement);",
         "        wrapper.appendChild(overlay);",
-        "        content.videoDiv.appendChild(wrapper);"
+        "        content.videoDiv.appendChild(wrapper);",
+        "        content.state = 'loading';",
+        "        content.onLoaded();",
+        "    }",
+        "    if (content.data.element.dataset.extsrc) {",
+        "        content.iframeDiv = document.createElement('div');",
+        "        content.iframeDiv.classList.add('iframe-div');",
+        "        content.iframeDiv.classList.add('pswp__img');",
+        "        const wrapper = document.createElement('div');",
+        "        wrapper.classList.add('iframe-wrapper');",
+        "        wrapper.style.width = content.data.element.dataset.pswpWidth;",
+        "        wrapper.style.height = content.data.element.dataset.pswpHeight;",
+        "        const iframeElement = document.createElement('iframe');",
+        "        iframeElement.src = content.data.element.dataset.extsrc;",
+        "        iframeElement.setAttribute('allowFullScreen', '');",
+        "        iframeElement.style.width = content.data.element.dataset.pswpWidth;",
+        "        iframeElement.style.height = content.data.element.dataset.pswpHeight;",
+        "        const overlay = document.createElement('div');",
+        "        overlay.classList.add('iframe-overlay');",
+        "        overlay.addEventListener('click', () => {",
+        "            overlay.classList.add('playing');",
+        "            wrapper.appendChild(iframeElement);",
+        "        });",
+        "        const button = document.createElement('div');",
+        "        button.classList.add('iframe-button');",
+        "        button.innerHTML = '⚠️';",
+        "        const warning = document.createElement('div');",
+        "        warning.classList.add('iframe-warning');",
+        "        warning.innerHTML = '<p>warning!</p>'",
+        "            + '<p>you are about to load an external iframe from <em>'",
+        "            + new URL(iframeElement.src).hostname",
+        "            + '</em>, by doing so you agree to their cookie and privacy policies!</p>';",
+        "        overlay.appendChild(warning);"
+        "        overlay.appendChild(button);",
+        "        wrapper.appendChild(overlay);",
+        "        content.iframeDiv.appendChild(wrapper);",
         "        content.state = 'loading';",
         "        content.onLoaded();",
         "    }",
@@ -281,12 +438,20 @@ try:
         "        e.preventDefault();",
         "        content.slide.container.appendChild(content.videoDiv);",
         "    }",
+        "    if (content.iframeDiv && !content.iframeDiv.parentNode) {",
+        "        e.preventDefault();",
+        "        content.slide.container.appendChild(content.iframeDiv);",
+        "    }",
         "});",
         "lightbox_" + name + ".on('contentRemove', (e) => {",
         "    const { content } = e;",
         "    if (content.videoDiv && content.videoDiv.parentNode) {",
         "        e.preventDefault();",
         "        content.videoDiv.remove();",
+        "    }",
+        "    if (content.iframeDiv && content.iframeDiv.parentNode) {",
+        "        e.preventDefault();",
+        "        content.iframeDiv.remove();",
         "    }",
         "});",
         "lightbox_" + name + ".init();"

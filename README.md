@@ -29,6 +29,7 @@ I built everything completely from scratch without any templates or includes, bu
 * [Google Fonts' Raleway](https://fonts.google.com/specimen/Raleway) where the macOS system font is not available
 * [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe/releases/latest) as a gallery plugin which is optimised for both traditional and touch devices
     * extended it to display caption, date, location, camera info and photography credit
+    * originally only supports images, extended it to display videos and YouTube / Vimeo embeds complete with pre-load cookie / privacy disclaimer
 * [Vue.js](https://github.com/vuejs/core) to facilitate the programmatic creation of gallery pages
 * toyed around with [Twemoji](https://github.com/twitter/twemoji) which replaces all emojis by platform-independent emojis but ditched it because I use emojis extensively in the `::before` styling of `<summary>` elements, and the CSS `content` property spec does not allow HTML so Twemoji failed to replace the emojs there. not their fault though and I think it's still a cool project that deserves to be mentioned.
 
