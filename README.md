@@ -75,6 +75,7 @@ I built everything completely from scratch without any templates or includes, bu
             * migrated the old gallery using a simple Bash script
 * toyed around with [Twemoji](https://github.com/twitter/twemoji) which replaces all emojis by platform-independent emojis but ditched it because I use emojis extensively in the `::before` styling of `<summary>` elements, and the CSS `content` property spec does not allow HTML so Twemoji failed to replace the emojs there. not their fault though and I think it's still a cool project that deserves to be mentioned.
 * I use [Songwhip](https://songwhip.com) as a website to create multi-streaming links (Spotify, Apple Music, YouTube (Music), Tidal, Amazon, Soundcloud, …) for songs / artists / albums
+* I've developed "KISSHTML" (`kiss.js`) as sort of an own framework, haven't checked the availability of the name yet, might change it later
 
 the navigation and socials sections are stored in separate files `nav.html` and `footer.html` and are used as server-side includes: `<!--#include file="nav.html"-->`
 
