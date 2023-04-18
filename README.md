@@ -81,9 +81,6 @@ the navigation and socials sections are stored in separate files `nav.html` and 
 
 I built a couple of helper scripts:
 
-* `gallery-vue.py [gallery name]` generates the gallery HTML / JS includes file `galleries/[gallery name].html` for a given folder `images/[gallery name]`
-    * if it finds a JSON file from Instaloader which contains metadata from the downloaded Instagram posts, it automatically adds the caption, date, location and a link to the original post
-    * custom caption, date, location, camera and photography credit information can be given in `.alt`, `.date`, `.loc`, `.camera` and `.credit` files, the latter of which I create as HTML snippets in the folder `images/credits/` and link to them; the information from these files overrides information parsed from the instaloader JSON
 * `get-exif.py [image file] (optional: [property])` is a helper tool for retrieving all properties or one specific property from the EXIF image metadata
 * `photo-info.sh [gallery name]` is a simple console-based editor which traverses a gallery folder, displays the images and generates `.alt` and `.loc` files and `.credit` links from user input
     * it uses [pxl](https://github.com/ichinaski/pxl) to display images in the terminal which works surprisingly well if the terminal text size is small enough
@@ -98,8 +95,7 @@ I built a couple of helper scripts:
     * if `john.doe` is input as credit info, the script will link
 
           "$img".credit -> images/credits/john.doe.credit
-
-* `update-all-galleries.sh` converts all filenames in `images/` gallery folders to lower case (this helps with camera imports which use `.JPG` and other malformed extensions, so I don't have to treat them separately in my other scripts) and calls `gallery-vue.py` on each gallery
+* `update-all-galleries.sh` converts all filenames in `images/` gallery folders to lower case (this helps with camera imports which use `.JPG` and other malformed extensions, so I don't have to treat them separately in my other scripts) and calls `gallery-json.py` on each gallery
 
 ## what software do you use for development?
 
