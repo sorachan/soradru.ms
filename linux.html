@@ -2,10 +2,10 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>Sora Drums 🥁🎶✌️</title><link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Sora Drums 🥁🎶✌️</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
     <body>
-        <script src="vue.global.js"></script>
         <!--#include file="nav.html"-->
         <main id="content">
             <p>
@@ -13,7 +13,7 @@
             </p>
             <h2>file transfer over SSH using port forwards and tar</h2>
             <ul>
-                <li>sometimes SFTP can be cumbersome, especially when files need to be transferred with the permissions of a cerain user that cannot log into SSH / SFTP directly</li>
+                <li>sometimes SFTP can be cumbersome, especially when files need to be transferred with the permissions of a certain user that cannot log into SSH / SFTP directly</li>
                 <li>an easy solution is to forward a port (e.g. 6000) and to transfer the files using <code>tar</code></li>
                 <li>open the SSH connection as follows: <code>ssh user@server -L 6000:localhost:6000</code></li>
                 <li>
@@ -26,7 +26,7 @@
                 <li>
                     to transfer files from the remote machine:
                     <ul>
-                        <li>on the remote machine, run <code>tar cv file1 … file N | nc -l 6000</code></code></li>
+                        <li>on the remote machine, run <code>tar cv file1 … fileN | nc -l 6000</code></code></li>
                         <li>on the local machine, run <code>cd destinationFolder && nc localhost 6000 | tar xv</code></li>
                     </ul>
                 </li>
@@ -52,8 +52,8 @@
                     <ul>
                         <li><code>${i%%pattern}</code> deletes the longest match of <code>pattern</code> from the back of <code>$i</code></code></li>
                         <li><code>${i%pattern}</code> deletes the shortest match of <code>pattern</code> from the back of <code>$i</code></code></li>
-                        <li><code>${i##pattern}</code> deletes the shortest match of <code>pattern</code> from the front of <code>$i</code></code></li>
-                        <li><code>${i##pattern}</code> deletes the shortest match of <code>pattern</code> from the front of <code>$i</code></code></li>
+                        <li><code>${i##pattern}</code> deletes the longest match of <code>pattern</code> from the front of <code>$i</code></code></li>
+                        <li><code>${i#pattern}</code> deletes the shortest match of <code>pattern</code> from the front of <code>$i</code></code></li>
                     </ul>
                 </li>
             </ul>
@@ -109,6 +109,7 @@
             </ul>
         </main>
         <!--#include file="footer.html"-->
-        <script type="text/javascript" src="main.js"></script>
+        <script type="module" src="main.js"></script>
+        <script type="module" src="kiss.js"></script>
     </body>
 </html>

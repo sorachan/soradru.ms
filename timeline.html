@@ -2,10 +2,10 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>Sora Drums 🥁🎶✌️ – timeline</title><link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Sora Drums 🥁🎶✌️ – timeline</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
     <body>
-        <script src="vue.global.js"></script>
         <!--#include file="nav.html"-->
         <main id="content">
             <h2>bands I've played in</h2>
@@ -13,7 +13,7 @@
             a 5-piece, later 4-piece, band from the tiny village of Rheurdt, German pop / rock, fell apart because of a love affair between the singer and the bassist's sister
             <details>
                 <summary class="photo">pics</summary>
-                <!--#include file="galleries/ef.html"-->
+                <div id="pwsp-ef" class="pswp-gallery auto-pswp" data-gallery="ef">
             </details>
             <details>
                 <summary class="video">videos</summary>
@@ -30,7 +30,7 @@
             5-piece punk band from Durham, ended mid-2017 because all of us were going separate ways
             <details>
                 <summary class="photo">pics</summary>
-                <!--#include file="galleries/gecko.html"-->
+                <div id="pwsp-gecko" class="pswp-gallery auto-pswp" data-gallery="gecko">
             </details>
             <details>
                 <summary class="video">videos</summary>
@@ -47,13 +47,14 @@
             a band that sadly fell apart because members wanted to pursue different directions
             <details>
                 <summary class="photo">pics</summary>
-                <!--#include file="galleries/tbh.html"-->
+                <div id="pwsp-tbh" class="pswp-gallery auto-pswp" data-gallery="tbh">
             </details>
             <h3><a href="https://instagram.com/iltismusic">Iltis</a> ("polecat", 2023–)</h3>
             a 3-piece rock band I recently joined
             <script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js" async></script>
         </main>
         <!--#include file="footer.html"-->
-        <script type="text/javascript" src="main.js"></script>
+        <script type="module" src="main.js"></script>
+        <script type="module" src="kiss.js"></script>
     </body>
 </html>

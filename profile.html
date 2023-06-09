@@ -2,10 +2,10 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>Sora Drums 🥁🎶✌️ – profile</title><link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Sora Drums 🥁🎶✌️ – profile</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
     <body>
-        <script src="vue.global.js"></script>
         <!--#include file="nav.html"-->
         <main id="content">
             <div id="profile">
@@ -13,11 +13,19 @@
                 <i>I am:</i>
                 <ul>
                     <li>Sora</li>
-                    <li><span id="age"></span> years old</li>
+                    <li><x-age data-bday="1995-07-14T21:57:00"></x-age> years old</li>
                     <li>a musician</li>
                     <li>an awkward emo kid who refuses to grow up</li>
                     <li>born and raised in Duisburg (DE), spent 9 months in Durham (UK)</li>
                     <li>part of "the scene" since 2009</li>
+                </ul>
+                <i>my life is dedicated to:</i>
+                <ul>
+                    <li>music and other arts</li>
+                    <li>friends and family</li>
+                    <li>technology and coding</li>
+                    <li>science and education</li>
+                    <li>charity and networking</li>
                 </ul>
                 <i>I like:</i>
                 <ul>
@@ -189,7 +197,7 @@
                             </tr>
                             <tr>
                                 <td>Most Missed Memory:</td>
-                                <td>childhood / early teen days in general, everything seemed so much easier back then</td>
+                                <td>the state of internet and <a href="society.html">society</a> we had around 2010. I miss the days of being online in the evening to chat on ICQ and MSN, much preferred it to the modern life of being online 24/7. also hate the tendency of websites being replaced by pages on socials, always loved the unique character of many of the sites I've visited over the years</td>
                             </tr>
                             <tr>
                                 <td>First Thought Waking Up:</td>
@@ -241,7 +249,7 @@
                                 <td>at least I try</td>
                             </tr>
                             <tr><td>Do you Smoke:</td>
-                                <td>yes, unfortunately - want to quit</td>
+                                <td>yes, unfortunately - want to quit. will still go to the smoking areas at venues and clubs though for that's where the most interesting chats happen, it's nice to be on the inside where it's loud but it's near impossible to communicate there, also most smokers I've met have been extremely nice and helpful to each other (I guess it's the addiction that bonds us)</td>
                             </tr>
                             <tr>
                                 <td>Do you Drink:</td>
@@ -258,157 +266,159 @@
                         </tbody>
                     </table>                
                 </p>
-                <script>
-                    var age = document.getElementById("age");
-                    var birthday = new Date("1995-07-14T19:57:00");
-                    var now = Date.now();
-                    age.innerHTML = Math.abs(new Date(now - birthday).getUTCFullYear() - 1970);
-                </script>
                 <h2 class="bio-heading">favourite music:</h2>
                 <p>
-                    favourite bands are in <b>bold</b> print, bands I've seen in concert have a <span style="background-color: hotpink;">pink background</span>.
+                    favourite bands / artists are in <b>bold</b> print, bands / artists I've seen in concert are in <span data-live>pink</span>.
                 </p>
                 <ul>
-                    <li>30 Seconds to Mars</li>
-                    <li>A Change of Pace</li>
-                    <li><span style="background-color: hotpink;">A Day to Remember</span></li>
-                    <li>Adair</li>
-                    <li><b>AFI</b></li>
-                    <li>Aiden</li>
-                    <li><b><span style="background-color: hotpink;">Alesana</span></b></li>
-                    <li><b><span style="background-color: hotpink;">Alexisonfire</span></b></li>
-                    <li>Alice Nine</li>
-                    <li>All Time Low</li>
-                    <li>Amatory</li>
-                    <li><span style="background-color: hotpink;">Arcane Roots</span></li>
-                    <li><b><span style="background-color: hotpink;">Architects</span></b></li>
-                    <li>Armor for Sleep</li>
-                    <li>Asking Alexandria</li>
-                    <li><span style="background-color: hotpink;">A Skylit Drive</span></li>
-                    <li>A Static Lullaby</li>
-                    <li><b><span style="background-color: hotpink;">Billy Talent</span></b></li>
-                    <li>Blessthefall</li>
-                    <li>Blindside</li>
-                    <li><b><span style="background-color: hotpink;">Bring Me the Horizon</span></b></li>
-                    <li><span style="background-color: hotpink;">Bury Tomorrow</span></li>
-                    <li><span style="background-color: hotpink;">Callejon</span></li>
-                    <li><b>Casper</b></li>
-                    <li><b><span style="background-color: hotpink;">Chiodos</span></b></li>
-                    <li><b><span style="background-color: hotpink;">Circle Takes the Square</span></b></li>
-                    <li><b><span style="background-color: hotpink;">Captain Disko</span></b></li>
-                    <li>Coldrain</li>
-                    <li><b>Curses</b></li>
-                    <li><b>Dream Theater</b></li>
-                    <li>Drop Dead, Gorgeous</li>
-                    <li>Emarosa</li>
-                    <li><b>Emery</b></li>
-                    <li><b><span style="background-color: hotpink;">Enter Shikari</span></b></li>
-                    <li>Envy</li>
-                    <li>Escape the Fate</li>
-                    <li>Evanescence</li>
-                    <li><b><span style="background-color: hotpink;">Eyes Set to Kill</span></b></li>
-                    <li>Fall Out Boy</li>
-                    <li><span style="background-color: hotpink;">Foo Fighters</span></li>
-                    <li>From First to Last</li>
-                    <li>Greeley Estates</li>
-                    <li>Hopes Die Last</li>
-                    <li><span style="background-color: hotpink;">Ice Nine Kills</span></li>
-                    <li>Isles &amp; Glaciers</li>
-                    <li><b>I Would Set Myself on Fire for You</b></li>
-                    <li><span style="background-color: hotpink;">Like Moths to Flames</span></li>
-                    <li>Linkin Park</li>
-                    <li><span style="background-color: hotpink;">Lower Than Atlantis</span></li>
-                    <li>Mando Diao</li>
-                    <li>Medusa'scream</li>
-                    <li><span style="background-color: hotpink;">Memphis May Fire</span></li>
-                    <li><b><span style="background-color: hotpink;">Motionless in White</span></b></li>
-                    <li>Moving Mountains</li>
-                    <li>My Chemical Romance</li>
-                    <li><b>NAVA</b></li>
-                    <li><b><span style="background-color: hotpink;">NOFX</span></b></li>
-                    <li><span style="background-color: hotpink;">Of Mice &amp; Men</span></li>
-                    <li><b>Origami</b></li>
-                    <li>Panic! at the Disco</li>
-                    <li><span style="background-color: hotpink;">Papa Roach</span></li>
-                    <li><b>Paramore</b></li>
-                    <li><span style="background-color: hotpink;">Parkway Drive</span></li>
-                    <li>Pianos Become the Teeth</li>
-                    <li>Pierce the Veil</li>
-                    <li><b><span style="background-color: hotpink;">Polar</span></b></li>
-                    <li>Renfue</li>
-                    <li><b><span style="background-color: hotpink;">Rise Against</span></b></li>
-                    <li>Saetia</li>
-                    <li><b><span style="background-color: hotpink;">Saosin</span></b></li>
-                    <li><b>Scary Kids Scaring Kids</b></li>
-                    <li>Senses Fail</li>
-                    <li><b><span style="background-color: hotpink;">Silent Planet</span></b></li>
-                    <li><b><span style="background-color: hotpink;">Silverstein</span></b></li>
-                    <li><span style="background-color: hotpink;">Sleeping with Sirens</span></li>
-                    <li><b>Stigmata</b></li>
-                    <li>Sunny Day Real Estate</li>
-                    <li><b><span style="background-color: hotpink;">The Bronx</span></b></li>
-                    <li><span style="background-color: hotpink;">The Color Morale</span></li>
-                    <li><b>The Early November</b></li>
-                    <li>The Fall of Troy</li>
-                    <li><b><span style="background-color: hotpink">The Red Jumpsuit Apparatus</span></b></li>
-                    <li><span style="background-color: hotpink;">There for Tomorrow</span></li>
-                    <li><span style="background-color: hotpink;">The Saddest Landscape</span></li>
-                    <li><span style="background-color: hotpink;">The Tidal Sleep</span></li>
-                    <li><span style="background-color: hotpink;">The Word Alive</span></li>
-                    <li><span style="background-color: hotpink;">Three Days Grace</span></li>
-                    <li>Thrice</li>
-                    <li>Thursday</li>
-                    <li><b><span style="background-color: hotpink;">Underoath</span></b></li>
-                    <li><b><span style="background-color: hotpink;">We Are the Ocean</span></b></li>
-                    <li><span style="background-color: hotpink;">We Came as Romans</span><br</li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0RqtSIYZmd4fiBKVFqyIqD">🇺🇸 30 Seconds to Mars</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3eJxobq5MS9zYVjiZs5bi0">🇺🇸 A Change of Pace</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4NiJW4q9ichVqL1aUsgGAN">🇺🇸 <span data-live>A Day to Remember</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4NxNQ7ZTd7PhhEKBHfYDex">🇺🇸 Adair</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1TsgX8DlUvpk9mrUqxmOZu">🇸🇪 Adept</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/19I4tYiChJoxEO5EuviXpz">🇺🇸 <b>AFI</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1FNjzdmDeHeZjU5qUJlQ1G">🇺🇸 Aiden</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1fnDlUNi67FQtHHqBl4Yfg">🇺🇸 <span data-fav data-live>Alesana</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/53RsXctnNmj9oKXvcbvzI2">🇨🇦 <span data-fav data-live>Alexisonfire</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0W2WmWV22BFZQ99FIcEk3v">🇯🇵 Alice Nine / A9 / アリス九號.</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/46gyXjRIvN1NL1eCB8GBxo">🇺🇸 All Time Low</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3JC5wZYLLWOWavmvGB94ow">🇷🇺 Amatory</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/58jeN5Whh7fhR67rE46qBt">🇬🇧 <span data-live>Arcane Roots</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3ZztVuWxHzNpl0THurTFCv">🇬🇧 <span data-fav data-live>Architects</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7eSbps3Uha3MMBNWhMYa2H">🇺🇸 Armor for Sleep</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1caBfBEapzw8z2Qz9q0OaQ">🇬🇧 Asking Alexandria</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2HSp2S2KwxKE7sASl6bMR9">🇺🇸 <span data-live>A Skylit Drive</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0nrcqEG1EEnOwpAfIv0UIb">🇺🇸 A Static Lullaby</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0nmQIMXWTXfhgOBdNzhGOs">🇨🇦 <span data-fav data-live>Avenged Sevenfold</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0p4nmQO2msCgU4IF37Wi3j">🇨🇦 Avril Lavigne</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/08yf5A2nS4XEeNvabDXqyg">🇨🇦 <span data-fav data-live>Billy Talent</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7t2C8WwLyKUKRe0LVh8zl9">🇺🇸 blessthefall</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0Uj2hge2fxypJ7f4ik6lpr">🇸🇪 Blindside</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1Ffb6ejR6Fe5IamqA5oRUF">🇬🇧 <span data-fav data-live>Bring Me the Horizon</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6BD4lgmnh4vy6kkCaZRDWt">🇬🇧 <span data-live>Bury Tomorrow</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1ce15ppX5OYxPsBVESZG3W">🇩🇪 <span data-live>Callejon</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6UDhlW8uEVBBrqHS3RrKuv">🇩🇪 <b>Casper</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4ZIBrskTJWmkJUvM7uAu1o">🇺🇸 <span data-fav data-live>Chiodos</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6MOCYNujfbML9cEXkktr4F">🇺🇸 <span data-fav data-live>Circle Takes the Square</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4PM032vNa5pyJy8aew44ml">🇩🇪 <span data-fav data-live>Captain Disko</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4pCVGaLWxDe4d8bsjsnmUM">🇯🇵 Coldrain</a></li>
+                    <li><a href="https://www.facebook.com/Cursesband/">🇺🇸 <b>Curses</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2aaLAng2L2aWD2FClzwiep">🇺🇸 <b>Dream Theater</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7ib9jRPvGJ6VPCTg35G2L9">🇺🇸 Drop Dead, Gorgeous</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/68tKVjVvcqUfKFFLr2j0Ek">🇺🇸 Emarosa</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4feAxLUxIU7G4KXhH0h2ni">🇺🇸 <b>Emery</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/31jvzuB4ikftPQZJwrYfCF">🇬🇧 <span data-fav data-live>Enter Shikari</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0CfjW2VuMdrhWodHtG7DWi">🇯🇵 envy</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5ojhEavq6altxW8fWIlLum">🇺🇸 Escape the Fate</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5nGIFgo0shDenQYSE0Sn7c">🇺🇸 Evanescence</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7omnn7IRrrxdMwSwchVxNP">🇺🇸 <span data-fav data-live>Eyes Set to Kill</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4UXqAaa6dQYAk18Lv7PEgX">🇺🇸 Fall Out Boy</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD">🇺🇸 <span data-live>Foo Fighters</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5n71fmAB8Un2IfAPn64erN">🇺🇸 From First to Last</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2l7ALCv1HxcE32kc3b7vag">🇺🇸 Greeley Estates</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7lDZOczH1YscXoadzACAil">🇮🇹 Hopes Die Last</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/52qKfVcIV4GS8A8Vay2xtt">🇺🇸 <span data-live>Ice Nine Kills</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6dHr8Y0nPrnHiBOuJzuu8F">🇺🇸 Isles &amp; Glaciers</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3eGwai0HULCeraystshybw">🇺🇸 <b>I Would Set Myself on Fire for You</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6RRpZz1uPqY9E28kmSPAhw">🇺🇸 <span data-live>Like Moths to Flames</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz">🇺🇸 Linkin Park</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1NUABJ0pgstTmZbw2Ia0gz">🇯🇵 LM.C</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1kF0gYnHLUJvFuPdoowO02">🇬🇧 <span data-live>Lower Than Atlantis</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5I4eibDkC7gg0hmczTZuND">🇸🇪 Mando Diao</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4APawGADEJ9pfXbukAZ1gZ">🇷🇺 Medusa'Scream</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7cNNNhdJDrt3vgQjwSavNf">🇺🇸 <span data-live>Memphis May Fire</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6MwPCCR936cYfM1dLsGVnl">🇺🇸 <span data-fav data-live>Motionless in White</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7xJHGz571pfkVGNxzPO9NY">🇺🇸 Moving Mountains</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7FBcuc1gsnv6Y1nwFtNRCb">🇺🇸 My Chemical Romance</a></li>
+                    <li><a href="https://www.facebook.com/WEARENAVA/">🇺🇸 <b>NAVA</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4S2yOnmsWW97dT87yVoaSZ">🇺🇸 <span data-fav data-live>NOFX</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2OooYq9h9rL9kUM2hRrKwW">🇫🇷 <b>Oakman</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4tususHNaR68xdgLstlGBA">🇺🇸 <span data-live>Of Mice &amp; Men</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7HQI8NqElySRvBH6IjS5Kc">🇷🇺 <b>Origami</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/20JZFwl6HVl6yg8a4H3ZqK">🇺🇸 Panic! at the Disco</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4RddZ3iHvSpGV4dvATac9X">🇺🇸 <span data-live>Papa Roach</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/74XFHRwlV6OrjEM0A2NCMF">🇺🇸 <b>Paramore</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/159qqlGwzE04xyqpfAwRLo">🇦🇺 <span data-live>Parkway Drive</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5gbwngeG3dwS4ARmtgud9C">🇺🇸 Pianos Become the Teeth</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4iJLPqClelZOBCBifm8Fzv">🇺🇸 Pierce the Veil</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6eby39yemH7FjGVwJID1Tw">🇬🇧 <span data-fav data-live>Polar</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3pIig1qly4nRKkaMHstPLD">🇺🇸 Renfue</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6Wr3hh341P84m3EI8qdn9O">🇺🇸 <span data-fav data-live>Rise Against</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5piONaqFh85tIjxSQgZuWA">🇺🇸 Saetia</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1NUOfvAhA9AvsF1ISMkgHX">🇺🇸 <span data-fav data-live>Saosin</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3cdos5vq3wSUR8mEvMiqq9">🇺🇸 <b>Scary Kids Scaring Kids</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/591yCCsZCLXvaJ0Rg38vLZ">🇺🇸 Senses Fail</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0JGTiwfinlCuANGu4Gq2XU">🇺🇸 <span data-fav data-live>Silent Planet</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1Tsag5J854qxeOo2apszug">🇨🇦 <span data-fav data-live>Silverstein</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3N8Hy6xQnQv1F1XCiyGQqA">🇺🇸 <span data-live>Sleeping with Sirens</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0SCLlZALysHfj8X8LPX0By">🇷🇺 <b>Stigmata</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2lZkXWxkZsZzBocxMjN1or">🇺🇸 Sunny Day Real Estate</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7nqSDaZKccpnUqjzedyZF4">🇺🇸 <span data-fav data-live>The Bronx</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3QHJftSfNb6KIerLVsx7zn">🇺🇸 <span data-live>The Color Morale</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2rxtSTPBJawYhQAXIpgEAi">🇺🇸 <b>The Early November</b></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5fuQrhMRYMtoO9uOlFad4P">🇺🇸 The Fall of Troy</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5fuQrhMRYMtoO9uOlFad4P">🇺🇸 The Fall of Troy</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4gRFSxjAcJkb54BDjqo7Bc">🇯🇵 the GazettE</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0lYXa6aa87Tz8Jzv1nW4HM">🇺🇸 <span data-live>There for Tomorrow</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6i8MWognuWjNQSP3iwDfqJ">🇺🇸 <span data-live>The Saddest Landscape</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0wKT5BmjY580wT27IZ1TUY">🇩🇪 <span data-live>The Tidal Sleep</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1CF8aEN939swnuIZGFI7Hk">🇺🇸 <span data-live>The Word Alive</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2xiIXseIJcq3nG7C8fHeBj">🇨🇦 <span data-live>Three Days Grace</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3NChzMpu9exTlNPiqUQ2DE">🇺🇸 Thrice</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/61awhbNK16ku1uQyXRsQj5">🇺🇸 Thursday</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3GzWhE2xadJiW8MqRKIVSK">🇺🇸 <span data-fav data-live>Underoath</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5RTzLFUNaRULfg2DPh5DPO">🇬🇧 <span data-fav data-live>We Are the Ocean</span></a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6qO6LhD6FuXK5e2PtfAIMz">🇺🇸 <span data-live>We Came as Romans</span><br</a></li>
                 </ul>
                 <p>
                     other bands I've seen live, either as support acts, at festivals or at other occasions include:
                 </p>
                 <ul>
-                    <li>Annisokay</li>
-                    <li>Any Given Day</li>
-                    <li>Apologies, I Have None</li>
-                    <li>Average Engines</li>
-                    <li>Breathe Atlantis</li>
-                    <li>Caliban</li>
-                    <li>Cancer Bats</li>
-                    <li>Code Orange Kids</li>
-                    <li>Confide</li>
-                    <li>Crossfaith</li>
-                    <li>Dead by April</li>
-                    <li>Dead Harts</li>
-                    <li>Donots</li>
-                    <li>Dream on, Dreamer</li>
-                    <li>Dropkick Murphys</li>
-                    <li>Flogging Molly</li>
-                    <li>Fort Hope</li>
-                    <li>For Today</li>
-                    <li>Frameworks</li>
-                    <li>Full of Hell</li>
-                    <li>Funeral for a Friend</li>
-                    <li>Glamour of the Kill</li>
-                    <li>Hollywood Undead</li>
-                    <li>Itchy Poopzkid</li>
-                    <li>Iwrestledabearonce</li>
-                    <li>Lonely the Brave</li>
-                    <li>Loveless</li>
-                    <li>Millencolin</li>
-                    <li>More than Life</li>
-                    <li>Northlane</li>
-                    <li>Novelists</li>
-                    <li>Palisades</li>
-                    <li>Parachutes</li>
-                    <li>Pathways</li>
-                    <li>Phinehas</li>
-                    <li>Say Yes</li>
-                    <li>Simply Red</li>
-                    <li>Stick to Your Guns</li>
-                    <li>Stray from the Path</li>
-                    <li>Tek One</li>
-                    <li>The Devil Wears Prada</li>
-                    <li>Young Guns</li>
-                    <li>Zebrahead</li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7lAi1Cv19DsukgGjbZQxFg">🇩🇪 Annisokay</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4p6RoajGbtqLSfYZpFxHyU">🇩🇪 Any Given Day</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4jlwmPhKc4tIVeguJ7N9T0">🇬🇧 Apologies, I Have None</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5uLGGxsOnTrpT8lmNvjNmq">🇩🇪 Average Engines</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6YLWRVTViX4bm2mGxRy9XN">🇩🇪 Breathe Atlantis</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1oeo6cC9Fqa2bxxv67qBQL">🇩🇪 Caliban</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/10YNQq86z4shHwDSymTyWc">🇨🇦 Cancer Bats</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3PTtN363e54hAJIzZe02j5">🇺🇸 Code Orange Kids / Code Orange</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5AaqnHhrLz7lC1QBqG8i8p">🇺🇸 Confide</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3gfA40vRbx6YX8oCDXDCDh">🇯🇵 Crossfaith</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2otRZcOVNcmdkZ5nEoogy6">🇸🇪 Dead by April</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4frsMpRTurgeTp7I5xCDZb">🇬🇧 Dead Harts</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2gRgzV2ooQwweEr4s7lwsg">🇩🇪 Donots</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1dgKyJ17rujJe8wpFaX67v">🇦🇺 Dream on, Dreamer</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7w9jdhcgHNdiPeNPUoFSlx">🇺🇸 Dropkick Murphys</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1WNoKxsp715jez1Td4vthc">🇩🇪 Eskimo Callboy / Electric Callboy</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5kQGFREO5FzMBMsAO3cEtj">🇺🇸 Flogging Molly</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6YT8OB3iuoB58qaSmP0bgt">🇬🇧 Fort Hope</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3xvHWAD1Bz6vvVmVMPpZJs">🇺🇸 For Today</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2N5BJEXSPup1i4j2xiGZFP">🇺🇸 Frameworks</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1i5rlthy5CmAYWaFOB0jhz">🇺🇸 Full of Hell</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4AbDWrmJPSOeIbT2Ou60ik">🇬🇧 Funeral for a Friend</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1FCJdfkOYWuCQwFRsJTObx">🇬🇧 Glamour of the Kill</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0CEFCo8288kQU7mJi25s6E">🇺🇸 Hollywood Undead</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/42pWilgI9MEZARoTtGHNR4">🇩🇪 Itchy Poopzkid / itchy</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2eFVIT8j6TJ7pPMhZYPwti">🇺🇸 iwrestledabearonce</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7Ks1xbMXEQjy9aQObTJdId">🇬🇧 Lonely the Brave</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7kyaZpHpGZnSE3PSYvIQPo">🇯🇵 Loveless</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3D4qYDvoPn5cQxtBm4oseo">🇺🇸 mewithoutYou</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/74xFFXkvOq9dPDigOWTHiX">🇸🇪 Millencolin</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3VgH8bHZdsRIPo7Kj0miPa">🇬🇧 More than Life</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/3qyg72RGnGdF521zMU02u9">🇦🇺 Northlane</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6o8sDniHcZPM1SixvjKiYS">🇫🇷 Novelists</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2w6slVluzWlwADP8aB5yz5">🇺🇸 Palisades</a></li>
+                    <li><a href="https://www.facebook.com/Parachutesnk/">🇩🇪 Parachutes</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0Z8OmT1MNUsJNlWZEKAER5">🇺🇸 Pathways</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1GHGBOI7I9FJfvhJe7e3A0">🇺🇸 Phinehas</a></li>
+                    <li><a href="https://www.facebook.com/sayyesofficial/">🇨🇦 Say Yes</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/1fa0cOhromAZdq2xRA4vv8">🇬🇧 Simply Red</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/2sqrupqcoipb7UzVKApEnJ">🇺🇸 Stick to Your Guns</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/5tGG1slV9pkcydU5eQSIvm">🇺🇸 Stray from the Path</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/7biv0NZKYtIrUNHo7BCc0O">🏳 Tek-One</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/0NbQe5CNgh4YApOCDuHSjb">🇺🇸 The Devil Wears Prada</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/4v4qHupYi7eRJfkniHrp4Z">🇬🇧 Young Guns</a></li>
+                    <li><a data-music-url="https://open.spotify.com/artist/6SiyKSeJo6gcsS2NvuAbsl">🇺🇸 zebrahead</a></li>
                 </ul>
                 <h2 class="bio-heading">favourite films / TV / books</h2>
                 <p>
@@ -423,11 +433,12 @@
                     <li><i>uni:</i> studying maths and omputer science minor in Bochum, Germany. spent a year abroad at Durham University which was a really great experience.</li>
                     <li><i>work:</i> used to tutor maths and CompSci at uni but hit the maximum time limit that students are permitted to work at uni. currently looking for a new job.</li>
                 </ul>
-                <h2 class="bio-heading">Who I'd Like To Meet</h2>
+                <h2 class="bio-heading">who I'd like to meet</h2>
                 lots of new people, I guess xD also (of course) all the folks from the bands I love or bands I don't know yet &lt;3
             </div>
         </main>
         <!--#include file="footer.html"-->
-        <script type="text/javascript" src="main.js"></script>
+        <script type="module" src="main.js"></script>
+        <script type="module" src="kiss.js"></script>
     </body>
 </html>

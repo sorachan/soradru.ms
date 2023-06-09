@@ -2,18 +2,81 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>Sora Drums 🥁🎶✌️</title><link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Sora Drums 🥁🎶✌️</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
-    <body>
-        <script src="vue.global.js"></script>
+    <body id="landing">
         <!--#include file="nav.html"-->
         <main id="content">
             <p>
-                Hi there! Welcome to my web page! I'm Sora – musician, tech nerd, awkward emo. Check out the navigation bar above to get around the website. It's still a work in progress, so expect some placeholders, empty pages and broken plugins. If you're visiting from a mobile device, please bear with me – this website was only created on 3.28 and I don't have any team behind me. Just didn't get around to coding mobile CSS yet, but I'll definitely do it in the next few days. in the meantime, please view this page on a 1080p+ device.
+                Hi there! Welcome to my web page!
             </p>
-            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sora.drums" data-unique-id="sora.drums" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@sora.drums?refer=creator_embed">@sora.drums</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+            <p>
+                I'm Sora – musician, tech nerd, awkward emo, <x-age data-bday="1995-07-14T21:57:00"></x-age> years old. Check out the navigation bar above to get around the website. It's still a work in progress, so expect some placeholders, empty pages and broken plugins. If you're experiencing any issues, please bear with me – this website was only created <x-ago data-date="2023-03-28T14:02:00"></x-ago> and I don't have any team behind me.
+            </p>
+            <p class="mobile-info contains-button">
+                The heart <span class="grey-button">💖</span> in the upper right corner opens the menu!
+            </p>
+            <div id="qa">
+                <details>
+                    <summary>why do you have so much random shit on your drums website?</summary>
+                    <ul>
+                        <li>
+                            it’s called “Sora Drums” because being a drummer is what I most identify with
+                            <ul>
+                                <li>I love the piano and other instruments, singing, CompSci, maths, food, and many other things as well but my life-long dream of travelling the world and playing music is more important to me than any money or other career could ever be and my main instrument is the drum kit</li>
+                            </ul>
+                        </li>
+                        <li>
+                            plain and easy, I’m too lazy (for now) to maintain multiple web presences for different topics, planning on separate Instagram accounts for different topics though
+                            <ul>
+                                <li>soon™️ <a href="https://instagram.com/sora.drums"><span class="citation" data-cites="sora.drums">@sora.drums</span></a> will only be used for drumming related content</li>
+                                <li>I will reactivate my old account <a href="https://instagram.com/sorachanx3"><span class="citation" data-cites="sorachanx3">@sorachanx3</span></a> which has been dormant since 2017 as my main <em>personal</em> Instagram, there are some pretty cool pics on there, go check them out</li>
+                                <li>
+                                    my temporary account <a href="https://instagram.com/instan0body"><span class="citation" data-cites="instan0body">@instan0body</span></a> where I posted some drumming content a few years ago and lots of weird shit during my psychosis last year is going to be cleaned up and turned into a Tumblr-ish Instagram for content edgy teens and tweens would like
+                                    <ul>
+                                        <li>also got a <a href="https://tumblr.com/hesflyingonbrokenwings">Tumblr</a> which I plan to clean up and use again if the platform hasn’t died out by now</li>
+                                    </ul>
+                                </li>
+                                <li>already registered <a href="https://instagram.com/sora.coding"><span class="citation" data-cites="sora.coding">@sora.coding</span></a>, <a href="https://instagram.com/sora.foodie"><span class="citation" data-cites="sora.foodie">@sora.foodie</span></a> and <a href="https://instagram.com/sora.education"><span class="citation" data-cites="sora.education">@sora.education</span></a>, nothing posted yet, more to come but Instagram temporarily banned me for creating too many accs too fast lol</li>
+                            </ul>
+                        </li>
+                        <li>
+                            this is more of a personal blog, archive and friendbook inspired by MySpace, LiveJournal and the thousands of free website creators around 15 years ago as well as a portfolio of what I can offer gig-wise
+                            <ul>
+                                <li>it's a multimedia blog (think: Tumblr), not a text blog, writing mainly text would feel too dry and academic for me</li>
+                                <li>don't get me wrong, I'm not hating on academia, I like uni and the <a href="friends.html">friends</a> I've met there and I've got A's on many exams, but I've just grown tired of the grind of taking exams and producing page after page for little to no return, it's just not for me</li>
+                            </ul>
+                        </li>
+                        <li>
+                            I have created this entire webpage from scratch and I have only been working on it since it went live on 2023.3.28 🧑‍💻
+                            <ul>
+                                <li>plain HTML5 (HTML / JS / CSS), no templates, no frameworks (been using <a href="https://github.com/vuejs/core">Vue.js</a> for a few days but removed it again)</li>
+                                <li><a href="https://github.com/sorachan/soradru.ms">the source code is on GitHub – sharing is caring 💖</a></li>
+                                <li>
+                                    of course I've used a few helper tools, and an external gallery plugin
+                                    <ul>
+                                        <li>some of the helper tools I've built myself are in the `helper/` folder (GitHub)</li>
+                                        <li>I chose <a href="https://github.com/dimsemenov/PhotoSwipe">PhotoSwipe</a> as a modern, touch-friendly, gallery-plugin</li>
+                                        <li>PhotoSwipe originally only supported images, extended it for video and YouTube / Vimeo embed functionality, gonna open-source this as a separate project soon</li>
+                                    </ul>
+                                </li>
+                                <li>also planning to open-source the friendbook code as a separate project, but all I have at the time of writing is <a href="friends/template.json">a JSON profile template</a></li>
+                                <li>
+                                    no cookies, I respect your privacy. 😇
+                                    <ul>
+                                        <li>gallery embeds from external pages are only loaded after clicking a disclaimer</li>
+                                    </ul>
+                                </li>
+                                <li>your experience might still be a bit buggy, especially on screen sizes other than 1080p (still working on responsive CSS), please use the "issues" tab in my GitHub for bugs / improvements or hmu on my socials if you don't have GitHub</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+            </div>
         </main>
         <!--#include file="footer.html"-->
-        <script type="text/javascript" src="main.js"></script>
+        <script type="module" src="main.js"></script>
+        <script type="module" src="kiss.js"></script>
     </body>
 </html>

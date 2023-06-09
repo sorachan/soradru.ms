@@ -10,15 +10,45 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Raleway", Arial, Helvetica, sans-serif;
     color: white;
+    font-size: 2vh;
 }
 
-a {
+a, a code {
     color: darkgrey;
+}
+
+a[data-music-url] {
+    font-style: italic;
 }
 
 code {
     color: hotpink;
     white-space: nowrap;
+}
+
+.caution {
+    background-color: rgb(255, 0, 0, 0.8);
+    font-weight: bold;
+}
+
+.caution::before {
+    content: "⚠️ ";
+}
+
+/* markup for timespans */
+
+x-ago {
+    border-bottom: 2px dotted darkgrey;
+}
+
+/* markup for bands (profile.html) */
+
+span[data-live] {
+    color: hotpink;
+}
+
+span[data-fav] {
+    font-weight: bold;
 }
 
 /* global dimensions */
@@ -47,7 +77,7 @@ a.icon span {
 
 body {
     background-attachment: fixed;
-    background-image: url("images/PXL_20230329_063754358.jpg");
+    background-image: url("images/resources/PXL_20230329_063754358.jpg");
     background-position: center center;
 	background-size: cover;
 }
@@ -168,7 +198,7 @@ img {
     display: grid;
     width: 100%;
     height: max-content;
-    grid-template-columns: repeat(7,1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 #content.gallery-page .pswp-gallery a {
@@ -224,7 +254,13 @@ img {
 
 .photo-caption {
     white-space: pre-wrap;
+    max-height: 20vh;
+    overflow: auto;
 }
+
+/*.photo-caption.overflown {
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
+}*/
 
 .insta-caption {
     display: block;
@@ -314,14 +350,11 @@ summary {
     color: darkgray;
 }
 
-#albums summary, #shows summary, #qa, #games summary {
+#albums summary, #shows summary, #qa summary, #games summary {
     list-style: none;
 }
 
-#albums summary::-webkit-details-marker,
-#shows summary::-webkit-details-marker,
-#qa summary::-webkit-details-marker,
-#games summary::-webkit-details-marker {
+summary::-webkit-details-marker, summary::marker {
     display: none;
 }
 
@@ -371,10 +404,6 @@ details summary.audio::before {
     content: "❗️ ";
 }
 
-#games details summary::before { 
-    content: "🎮 ";
-}
-  
 /* image scaling for different pages */
 
 #qa img {
@@ -396,7 +425,7 @@ details summary.audio::before {
 
 #footerbg {
     background-color: black;
-    background-image: url(images/bYL7eut-emo-backround.jpg);
+    background-image: url("images/resources/bYL7eut-emo-backround.jpg");
     background-repeat: no-repeat;
     background-position: bottom right;
     background-size: auto 200%;
@@ -469,7 +498,11 @@ details summary.audio::before {
     line-height: 3em;
 }
 
-@media screen and (max-width: 1200px) {
+.contains-button + * {
+    margin-top: 3vh;
+}
+
+@media screen and (max-width: 1500px) {
     body {
         font-size: 32px;
     }
@@ -552,4 +585,19 @@ details summary.audio::before {
         transform: scale(3);
         margin: var(--margin);
     }
+}
+
+/* friendbook */
+
+.friendbook {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.friendbook div {
+    padding: 1em;
+}
+
+.friendbook img {
+    width: 200px;
 }

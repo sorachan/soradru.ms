@@ -2,10 +2,10 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="main.css">
-        <title>Sora Drums 🥁🎶✌️ - programming</title><link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Sora Drums 🥁🎶✌️ - programming</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
     </head>
     <body>
-        <script src="vue.global.js"></script>
         <!--#include file="nav.html"-->
         <main id="content">
             <h2>programming 🧑‍💻</h2>
@@ -21,6 +21,7 @@
                     I have no problem tackling tasks that are new to me such as working with a new language or framework. 70% of programming boils down to understanding basic language-independent concepts and consulting StackOverflow / documentation anyway (never forget to RTFM!)
                 </li>
                 <li>I write clean and commented code and have experience with Scrum development</li>
+                <li>my programing style is pragmatic, not dogmatic. concepts like OOP design patterns or "writing Pythonic code" are useful tools to have at one's disposal, but not must-use cornerstones of good code. I tend to minimise dependencies on external packages, but do so when it's necessary so as not to reinvent the wheel. also, optimisation is nice to have but it quickly turns into over-engineering.</li>
                 <li>
                     language skills:
                     <ul>
@@ -38,18 +39,19 @@
                 <li>
                     I built this website from scratch without any templates / boilerplates
                     <ul>
-                        <li>but I decided to include PhotoSwipe as a vanilla JS gallery solution and Vue.js as a standalone script to facilitate gallery creation</li>
-                        <li>I wrote a Python script which traverses an image folder, reads the camera make / model and date / time from the EXIF metadata and automatically generates thumbnails and the include HTML / JS / Vue code for the corresponding gallery, as well as a Bash script to help me caption and credit pictures, and extended PhotoSwipe to display credit, camera and date info</li>
+                        <li>but I decided to include <a href="https://photoswipe.com/">PhotoSwipe</a> as a vanilla JS gallery solution and wrote code to facilitate gallery creation</li>
+                        <li>I extended PhotoSwipe, which normally only allows images, to support videos as well as YouTube and Vimeo embeds</li>
+                        <li>I wrote a Python script which traverses an image folder, reads the camera make / model and date / time from the EXIF metadata and automatically generates thumbnails and the gallery descriptor files, as well as a Bash script to help me caption and credit pictures, and extended PhotoSwipe to display credit, camera and date info</li>
                         <li>the <a href="https://github.com/sorachan/soradru.ms">source code for this website</a> is on my GitHub</li>
                     </ul>
 
                 </li>
-                <li>check out <a href="http://mines.dillbox.me">my Minesweeper clone</a>, so conservatively written it works on anything from IE6 to Chrome Mobile (tap the smiley for instructions), won a small coding competition with that (sorry, this piece of code is uncommented, wrote it in a hurry)</li>
+                <li>check out <a href="http://mines.dillbox.me">my Minesweeper clone</a>, so conservatively written it works on anything from IE6 to Chrome Mobile (tap the smiley for instructions), won a small coding competition with that (sorry, this piece of code is uncommented, wrote it in a hurry, however it's very basic so you should be able to figure it out. if you still have any questions, just ask me, I like explaining stuff xD)</li>
                 <li>check out my GitHub (link in the footer) to see some of my past projects</li>
                 <li>might seem weird to have a drummer coding your stuff but then again, Dream Theater's drummer Mike Mangini used to write code for NASA so why not</li>
             </ul>
         </main>
         <!--#include file="footer.html"-->
-        <script type="text/javascript" src="main.js"></script>
+        <script type="module" src="main.js"></script>
     </body>
 </html>

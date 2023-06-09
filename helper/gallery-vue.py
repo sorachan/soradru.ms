@@ -10,6 +10,7 @@ from datetime import datetime
 import requests
 import re
 import pyktok as pyk
+from pytube import YouTube
 
 usage = "usage: " + sys.argv[0] + " [gallery name (folder: images/name)]"
 
@@ -201,11 +202,29 @@ try:
                     id = link.split(".be/")[-1]
                 extsrc = "https://www.youtube.com/embed/" + id
                 thumb_path = "https://img.youtube.com/vi/" + id + "/0.jpg"
+                thumb = None
                 thumb = requests.get(thumb_path)
                 with open("/tmp/thumb.png", "wb") as f:
                     f.write(thumb.content)
                 image = cv2.imread("/tmp/thumb.png")
                 height, width, _ = image.shape
+                video = None
+                while not video:
+                    video = YouTube("https://youtu.be/" + id)
+                alt = '<span class="insta-caption"><a href="https://youtu.be/' \
+                    + id \
+                    + '"><span class="icon fab fa-youtube"></span></a> ' \
+                    + video.description \
+                    + '</span>'
+                time = video.publish_date
+                date = "%d.%d.%d" % (time.year, time.month, time.day)
+                credit = (
+                    '<a href="'
+                    + video.channel_url
+                    + '"><span class="icon fab fa-youtube"></span> '
+                    + video.author
+                    + '</a>'
+                )
                 if os.path.isfile(path + ".alt"):
                     alt = "".join(open(path + ".alt").readlines()).strip()
                 if os.path.isfile(path + ".credit"):
@@ -236,7 +255,7 @@ try:
                 thumb_url = "https://vimeo.com/api/v2/video/" + id + ".json"
                 thumb_req = requests.get(thumb_url)
                 thumb_data = thumb_req.json()
-                thumb_path = thumb_data[0]["thumbnail_large"].replace("http", "https")
+                thumb_path = thumb_data[0]["thumbnail_large"].replace("http:", "https:")
                 thumb = requests.get(thumb_path)
                 with open("/tmp/thumb.png", "wb") as f:
                     f.write(thumb.content)
@@ -334,19 +353,20 @@ try:
         "            }",
         "            el.innerHTML = '';",
         "            if (captionHTML) {",
-        """                el.innerHTML += '<div class="photo-caption">' + captionHTML;""",
+        """                el.innerHTML += '<div class="photo-caption">' + captionHTML + '</div>';""",
+        r"""                el.innerHTML += '<img src="?" onerror="alert(\'foo\'); for (const element of document.querySelectorAll(\'.photo-caption\')) { if (element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth) element.classList.add(\'overflown\'; }" />';""",
         "            }",
         "            if (cameraHTML) {",
-        """                el.innerHTML += '<div class="photo-camera">' + cameraHTML;""",
+        """                el.innerHTML += '<div class="photo-camera">' + cameraHTML + '</div>';""",
         "            }",
         "            if (creditHTML) {",
-        """                el.innerHTML += '<div class="photo-credit">' + creditHTML;""",
+        """                el.innerHTML += '<div class="photo-credit">' + creditHTML + '</div>';""",
         "            }",
         "            if (dateHTML) {",
-        """                el.innerHTML += '<div class="photo-date">' + dateHTML;""",
+        """                el.innerHTML += '<div class="photo-date">' + dateHTML + '</div>';""",
         "            }",
         "            if (locationHTML) {",
-        """                el.innerHTML += '<div class="photo-location">' + locationHTML;""",
+        """                el.innerHTML += '<div class="photo-location">' + locationHTML + '</div>';""",
         "            }",
         "        });}",
         "    });",
@@ -467,4 +487,7 @@ try:
 except Exception as e:
     print("encountered an error")
     print(e)
+    exc_type, exc_obj, exc_tb = sys.exc_info()
+    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+    print(exc_type, fname, exc_tb.tb_lineno)
     print(usage)
