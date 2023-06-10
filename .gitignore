@@ -1,0 +1,12 @@
+friends/*
+images/*
+images-old/*
+galleries/*
+photoswipe/*
+transcripts/*
+vue.global.js
+.DS_Store
+._.DS_Store
+._photoswipe
+helper/.ipynb_checkpoints/*
+
