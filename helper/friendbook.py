@@ -1079,6 +1079,9 @@ for initial in friends_by_initials:
                 "</ul>",
                 "</div>"
             ]
+        html += [
+            "<div class=\"general-info\">"
+        ]
         if friend.get("ethnicity"):
             html += [
                 "<div class=\"ethnicity\">",
@@ -1107,6 +1110,9 @@ for initial in friends_by_initials:
                 friend["politicalViews"],
                 "</div>"
             ]
+        html += [
+            "</div>"
+        ]
         if friend.get("mottos"):
             html += [
                 "<div class=\"mottos\">",
