@@ -1,4 +1,5 @@
 friends/*
+!friends/template.json
 images/*
 images-old/*
 galleries/*

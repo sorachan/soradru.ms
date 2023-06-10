@@ -1,0 +1,370 @@
+{
+    "general": {
+        "name": "John Doe",
+        "nicknames": [
+            "Johnnyboy",
+            "Jo",
+            "J-Dog"
+        ],
+        "id": "john",
+        "born": {
+            "birthDate": [1942, 3, 14],
+            "birthYear": 1942,
+            "birthApprox": 1940,
+            "comment": "only one of the above properties should be defined",
+            "place": {
+                "city": "Baton Rouge",
+                "state": "LA",
+                "country": "US"
+            }
+        },
+        "died": {
+            "deathDate": [2052, 5, 1],
+            "deathYear": 2052,
+            "deathApprox": 2050,
+            "comment": "only one of the above properties should be defined; will be obituary profile if 'died' property is set",
+            "place": {
+                "city": "Chengdu",
+                "state": "Sichuan",
+                "country": "CN"
+            },
+            "cause": "natural causes",
+            "suicide": false,
+            "murdered": false,
+	        "murderedBy": "name of assassin"
+        },
+        "family": [
+            {
+                "relation": "mother",
+                "id": "joanna-doe"
+            },
+            {
+                "relation": "sister",
+                "id": "jenny-doe"
+            }
+        ],
+        "profilePic": {
+            "url": "images/2010/4/20/247.jpg",
+            "caption": "John in Amsterdam",
+            "photoCredit": {
+                "friendId": "jane",
+                "external": {
+                    "name": "Jane Doe",
+                    "url": "https://janedoe.example"
+                },
+                "comment": "only one of the above properties should be defined"
+            }
+        }
+    },
+    "phone": [
+	{
+	    "number": "+495315836713",
+	    "type": "landline"
+	},
+	{
+	    "number": "+495315836174",
+	    "type": "fax"
+	},
+	{
+	    "number": "+491631111111",
+	    "type": "mobile",
+	    "whatsapp": true,
+	    "signal": true,
+	    "telegram": true
+	}
+    ],
+    "socials": {
+	"discord": "johndoe#1337",
+        "facebook": "johndoe",
+        "github": "johndoe",
+        "instagram": "johndoe",
+	    "kik": "johndoe",
+        "linkedin": "johndoe",
+        "snapchat": "johndoe",
+        "tiktok": "johndoe",
+        "tumblr": "johndoe",
+        "twitch": "johndoe",
+        "vk": "johndoe",
+        "youtube": "johndoe",
+        "xing": "johndoe",
+        "web": "https://johndoe.example",
+        "comment": "can be links or usernames / profile IDs",
+	"comment2": "older YT accs have no '@' at the beginning, please add '@' if necessary"
+    },
+    "gamerTags": {
+        "ingress": "johndoe",
+        "pokemongo": "1234567890",
+        "psn": "johndoe",
+        "steam": "johndoe",
+        "xbox": "johndoe#1337"
+    },
+    "contact": {
+        "telegram": "johndoe",
+        "icq": "123456789",
+        "email": "john@johndoe.example",
+        "matrix": "@john:johndoe.example"
+    },
+    "food": {
+        "dishes": [
+            "pizza",
+            "sushi",
+            "tacos"
+        ],
+        "restaurants": [
+            "Alberto's Pizzeria",
+            "Yabase Sushi"
+        ]
+    },
+    "drinks": {
+        "beverages": [
+            "coffee",
+            "whiskey",
+            "orange juice"
+        ],
+        "bars": [
+            "MacLaren's",
+            "Moe's"
+        ]
+    },
+    "drugs": [
+        "weed",
+        "alcohol",
+        "caffeine"
+    ],
+    "animals": [
+	"cat"
+    ],
+    "music": {
+        "genres": [
+            "rap",
+            "reggae",
+            "ska"
+        ],
+        "artists": [
+            {
+                "name": "Snoop Dogg",
+                "url": "https://snoopdogg.com"
+            },
+            {
+                "name": "Bob Marley",
+                "url": "https://songwhip.com/bob-marley"
+            },
+            {
+                "name": "Sublime",
+                "url": "https://songwhip.com/sublime"
+            }
+        ],
+        "songs": [
+            {
+                "title": "Summer Wine",
+                "artists": [
+                    "Lee Hazlewood",
+                    "Nancy Sinatra"
+                ],
+                "url": "https://songwhip.com/nancy-sinatra/summer-wine"
+            }
+        ],
+        "albums": [
+            {
+                "title": "Collision Course",
+                "artists": [
+                    "Jay-Z",
+                    "Linkin Park"
+                ],
+                "url": "https://songwhip.com/jayz2/collisioncourse"
+            }
+        ],
+        "shows": [
+            "Elvis in Hawaii"
+        ],
+        "instruments": [
+            "guitar",
+            "violin"
+        ]
+    },
+    "books": [
+        {
+            "title": "1984",
+            "author": "George Orwell",
+            "url": "https://www.goodreads.com/book/show/61439040-1984"
+        },
+        {
+            "title": "Brave New World",
+            "author": "Aldous Huxley",
+            "url": "https://www.goodreads.com/book/show/5129.Brave_New_World"
+        }
+    ],
+    "tv": [
+        {
+            "title": "How I Met Your Mother",
+            "url": "https://www.imdb.com/title/tt0460649/"
+        },
+        {
+            "title": "South Park",
+            "url": "https://southparkstudios.com"
+        }
+    ],
+    "movies": [
+        {
+            "title": "Pulp Fiction",
+            "url": "https://www.imdb.com/title/tt0110912/"
+        },
+        {
+            "title": "Harold & Kumar Go to White Castle",
+            "url": "https://www.imdb.com/title/tt0366551/"
+        }
+    ],
+    "style": {
+        "accessories": [
+            "sharktooth necklace",
+            "wedding ring"
+        ],
+        "wardrobeItems": [
+            "flannel shirts",
+            "denim jeans"
+        ],
+        "makeUp": [
+            "NYX eyeliner",
+            "Manhattan foundation"
+        ],
+        "stores": [
+            "Claire's",
+            "Hot Topic"
+        ],
+        "piercings": [
+            "snake bites",
+            "helix"
+        ],
+        "tattoos": [
+            "name above heart",
+            "anchor next to name"
+        ]
+    },
+    "tech": {
+        "desktopOs": "Windows",
+        "mobileOs": "iOS",
+        "browser": "Chrome",
+        "editor": "Emacs"
+    },
+    "sportsTeams": [
+	    "Jets"
+    ],
+    "likes": [
+        "baseball",
+        "trees"
+    ],
+    "dislikes": [
+        "right-wing politics",
+        "winter"
+    ],
+    "hobbies": [
+        "cycling",
+        "surfing"
+    ],
+    "workedAt": [
+        {
+            "name": "Apple",
+            "position": "Genius bar clerk",
+            "time": [2020, null],
+            "url": "https://apple.com"
+        },
+        {
+            "name": "Starbucks",
+            "position": "barista",
+            "time": [2016, 2020],
+            "url": "https://starbucks.com"
+        }
+    ],
+    "hometown": {
+        "city": "New York",
+        "state": "NY",
+        "country": "US"
+    },
+    "currentLocation": {
+        "city": "Amsterdam",
+        "country": "NL"
+    },
+    "livedIn": [
+        {
+            "city": "Paris",
+            "country": "FR"    
+        },
+        {
+            "city": "Tokyo",
+            "country": "JP"
+        }
+    ],
+    "trips": [
+        "Niagara Falls",
+        "Kilimanjaro",
+        "Japan"
+    ],
+    "modesOfTransport": [
+        "bicycle",
+        "skateboard"
+    ],
+    "languages": [
+        "English (American)",
+        "Dutch",
+        "German",
+        "French",
+        "Japanese"
+    ],
+    "ethnicity": "half French, half American",
+    "sexuality": "heterosexual",
+    "genderIdentity": "cisgender",
+    "politicalViews": "liberal",
+    "mottos": [
+	    "live long and prosper"
+    ],
+    "relationship": {
+        "status": "married to",
+        "friendId": "jane"
+    },
+    "friendship": {
+        "whenWeMet": "2005",
+        "whereWeMet": "on the sunny beaches of Ipanema",
+        "howWeMet": "he was serving cocktails at the bar",
+        "tellYou": [
+            "thanks for having my back at all times",
+            "the new season of South Park is out, you should watch it"
+        ],
+        "wannaDo": [
+            "have a beer at the beach",
+            "play some music"
+        ],
+        "memories": [
+            "that time we smoked weed with Snoop Dogg",
+            "long nights at the beach"
+        ],
+        "places": [
+            "on the beach",
+            "at MacLaren's",
+            "in school"
+        ],
+        "quotes": [
+            "dude!",
+            "hold my beer"
+        ],
+        "chats": [
+            [
+                "uh… where are we going?",
+                "wait, I thought you were the one leading the way?",
+                "fuck."
+            ],
+            "images/chats/foobar.png",
+            [
+                "comment: can be a list of utterances or a link to a screenshot"
+            ]
+        ],
+        "taughtMe": [
+            "how to play the blues",
+            "the recipe for jambalaya"
+        ],
+        "taughtThem": [
+            "how to roll a joint with a bamboo mat",
+            "the recipe for Kung Pao chicken"
+        ]
+    },
+    "css": true
+}

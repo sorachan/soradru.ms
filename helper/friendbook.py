@@ -353,7 +353,7 @@ for initial in friends_by_initials:
             ],
             "web": [
                 "{}",
-                "Website"
+                "<i class=\"icon fas fa-globe\"></i> Website"
             ]
         }
         if friend.get("socials"):
